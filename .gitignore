@@ -2,6 +2,7 @@ dist/
 node_modules/
 config.js
 npm-debug.log
+bower_components/
 
 __MACOSX
 .DS_Store
