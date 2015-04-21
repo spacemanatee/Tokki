@@ -7,11 +7,15 @@ var dbUtils = require('../utils/dbUtils');
 
 exports.SessionModel = Backbone.Model.extend({
   initialize: function() {
-    this.set('intervalObject', setInterval(this._update.bind(this), this.get('interval')));
+    if (this.get('autoUpdate')) {
+      this.set('intervalObject', setInterval(this._update.bind(this), this.get('interval')));
+    }
+    this.cid = this.get('cid');
     dbUtils.openSessionInDb({
         provider: this.get('provider'),
         hostId: this.get('hostId'),
-        sessionId: this.cid
+        sessionId: this.cid,
+        interval: this.get('interval')
       }, this.get('cb')
     );
   },
@@ -20,6 +24,7 @@ exports.SessionModel = Backbone.Model.extend({
   defaults: function() {
     return {
       votes: new VotesCollection(),
+      startTime: Date.now(),
 
       // Used to compute current average
       sumVoteVals: 0,
@@ -30,17 +35,24 @@ exports.SessionModel = Backbone.Model.extend({
       sumVoteCounts: 0,
 
       stepCount: 0,
+      autoUpdate: true,
       interval: 2000,
       maxAge: 6*60*60*1000, // maxAge is 6 hours
 
       // Used in forwarding changes to firebase
       provider: null,
-      hostId: null
+      hostId: null,
+
+      // Lazy way to avoid collisions
+      // substring 2 maxes at length of 16
+      cid: Math.random().toString(36).substring(12)
     };
   },
 
   end: function() {
-    clearInterval(this.get('intervalObject'));
+    if (this.get('autoUpdate')) {
+      clearInterval(this.get('intervalObject'));
+    }
     if (this.collection) {
       this.collection.removeSession(this.cid);
     }

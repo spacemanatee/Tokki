@@ -1,40 +1,29 @@
-<!-- This page will contain a list of a host"s historic session links to view -->
-
+<!-- A list of a host's historic sessions.
+ Links to Analysis view per session -->
 <h3>Select a session:</h3>
-<!-- This is where historic sessions can be appended -->
-<!--
-<div>Sessions Appended Here</div>
--->
-<!--- Data in format of JSON objects
-  provider:
-    host:
-      sessionId: {
-        voteId: voteVal
-        ..
-        }
-        : startTime
-        ng-repeat="session in sessions.data |filter: session.hostId | orderBy: timeStart"
-  -->
-  <!--
-<div >
-<a href="#/hostAnalysisView" id="sessionAnalysis" ng-click="sessionAnalysis()" ng-class="" data-ng-init="session in sessions | filter: hostId | orderBy: timeStart"><h4><span> {{sessions.id}} </span> : <span> {{sessions.startTime}}</span> : <span>{{sessions.timeStamp}} </span></h4></a></div>
--->
-
-<form name="SessionsForm" ng-controller="AnalysisController">
-<table align = "center" class="sessions">
-<tr><th>Session ID</th><th>Start Time</th><th>Duration</th><th>Average</th><th>Total Votes</th></tr>
-<tr><td colspan="5" ></td></tr>
-<tr ng-repeat="session in sessions | filter: hostId | orderBy: timeStart">
-  <td><input required ng-model="session.id"><a href = "#/api/"+session.id >{{session.id}} </a></td>
-  <td><select ng-model="session.startTime" >{{session.startTime}}</select></td>
-  <td><input required ng-model="session.timeElapsed">{{session.elapsedTime}}</td>
-  <td><select ng-model="session" ng-options="">{{session.cumSumVoteVals / sumVoteCounts}}</td>
-  <td><input required ng-model="session.sumVoteCounts">{{session.sumVoteCounts}}</td>
-</tr>
-<tr><td colspan="5"></tr>
+<!-- Where historic sessions are appended -->
+<div ng-app ng-model="tokki">
+<table align="center" ng-controller="AnalysisController">
+  <tbody>
+    <tr>
+      <th>Session ID</th>
+      <th>Start Time</th>
+      <th>Duration (min)</th>
+      <th>Average</th>
+      <th>User Count</th>
+    </tr>
+    <!-- Additional sessions appended-->
+    <!--<tr><td colspan="5" ></td></tr> -->
+    <tr ng-repeat="session in sessions | orderBy: session.startTime">
+      <td><a href = "#/api/"+session.id >{{session.sessionId}} </td>
+      <td><mydate>{{ session.startTime | date:'yyyy-MM-dd HH:mm'}}</mydate></td>
+      <!--Duration is in milliseconds (ms)
+          Divided to represent minutes, one sig fig-->
+      <td>{{session.duration/1000/60 | number:1}}</td>
+      <td>{{session.weightedAverage | number:1}}</td>
+      <td>{{session.userCount}}</td>
+      </tr>
+      <!--<tr><td colspan="5"></tr> -->
+  </tbody>
 </table>
-</form>
 
-
-
-<button id="logout">Logout</button>

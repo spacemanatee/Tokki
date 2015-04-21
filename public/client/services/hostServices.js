@@ -5,7 +5,8 @@ angular.module('tokki')
   var session = {
     id: '',
     url: '/host',
-    socket: null
+    socket: null,
+    upTime: 0
   };
 
   // Sends a request for a new session.
@@ -29,6 +30,10 @@ angular.module('tokki')
 
     session.socket.on('connect', function() {
       // Listens for stats
+      session.socket.on('upTime', function(data) {
+        session.upTime = data;
+      });
+
       session.socket.on('stats', function(data) {
         cb(data);
       });
@@ -46,10 +51,15 @@ angular.module('tokki')
     }
   };
 
+  var upTime = function() {
+    return session.upTime;
+  };
+
   return {
     startSession: startSession,
     listen: listen,
-    endSession: endSession
+    endSession: endSession,
+    upTime: upTime
   };
 
 });

@@ -1,15 +1,20 @@
 angular.module('tokki')
-  .controller('HostController', ['$scope', 'HostServices', function($scope, HostServices) {
+  .controller('HostController', ['$scope', '$interval', 'HostServices', function($scope, $interval, HostServices) {
 
   $scope.sessionId = 'no current session';
   $scope.currAvg = 0;
   $scope.hisAvg = 0;
   $scope.userCount = 0;
-  $scope.time = moment().format('h:mm');
-  setInterval(function(){
-    $scope.time = moment().format('h:mm');
-    $scope.$apply();
-  }, 1000);
+  $scope.time = '00 : 00 : 00';
+  var startTime = 0;
+  var gotTime = false;
+  var setTime = function(){
+    $scope.time = moment(moment() - moment(startTime) - 57600000).format('HH : mm : ss');
+
+    $interval(function(){
+      $scope.time = moment(moment() - moment(startTime) - 57600000).format('HH : mm : ss');
+    }, 100);
+  };
 
   // Opens a new session
   $scope.startSession = function() {
@@ -22,6 +27,12 @@ angular.module('tokki')
         $scope.userCount = sessionData.userCount || 0;
         $scope.currAvg = (sessionData.currentAverage || 0).toFixed(2);
         $scope.hisAvg = (sessionData.historicalAverage || 0).toFixed(2);
+        if(!gotTime){
+          startTime = moment() - HostServices.upTime();
+          console.log(startTime);
+          gotTime = true;
+          setTime();
+        }
         $scope.$apply();
       });
 

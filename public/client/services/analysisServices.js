@@ -2,15 +2,12 @@
 angular.module('tokki')
   .factory('AnalysisServices', function($http) {
 
-  $scope.sessions = {
-    sessionId:{
-    id: '',
-    url: '#/api/',
-    hostId: hostId,
-    sessionId: sessionId,
-    data: data
-    }
-  };
+  // var sessions = {
+  //   sessionId:{
+  //     id: '',
+  //     url: '#/api/'
+  //   }
+  // };
 
   // Sends a request of all sessions from a host
   // Receives the session IDs, start times
@@ -19,12 +16,11 @@ angular.module('tokki')
     return $http({
       method: 'GET',
       //Call to Server, who has DB methods
-      url: session.url + '/' + sesssion.hostId
+      url: '/host/old'
     })
     .then(function(resp) {
       console.log("SessionHistory called");
       // Historical data pulled from server via db
-      session.data = resp.data;
       cb(resp.data);
     });
   };
@@ -41,12 +37,12 @@ angular.module('tokki')
       console.log("SessionAnalysis called");
       session.data = resp.data;
       cb(resp.data);
-    })
-  }
+    });
+  };
 
 
   return {
-    sessionsHistory: sessionsHistory,
+    sessionHistory: sessionHistory,
     sessionAnalysis: sessionAnalysis
   };
 

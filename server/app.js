@@ -5,19 +5,38 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Authentication
+var passport = require('passport');
+var flash = require('connect-flash');
+var session = require('express-session');
+var config = require('./auth/config');
+
 var app = express();
 
-//define routers
+// Define routers
 var guestRouter = express.Router();
 var hostRouter = express.Router();
 
-// uncomment after placing your favicon in /public
+// Uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public/client')));
+
+// Required for passport
+// TODO: Select a compatible session store for production environments
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: config.sessionSecret
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./auth/passport')(passport);
 
 /* GET home page. */
 app.get('/', function(req, res, next) {
@@ -28,7 +47,7 @@ app.use('/guest', guestRouter);
 app.use('/host', hostRouter);
 
 require('./routers/guestRouter')(guestRouter);
-require('./routers/hostRouter')(hostRouter);
+require('./routers/hostRouter')(hostRouter, passport); // Only host needs authentication
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -21,6 +21,8 @@ exports.init = function(sessionId, done) {
   // TODO: Add auth for this room
   var sessionHostIo = io.of('host/'+sessionId);
   sessionHostIo.on('connect', function(socket) {
+    socket.emit('upTime', Date.now() - sessions.get(sessionId).get('startTime'));
+
     // Calls calculateStats every interval with the proper sessionId
     var intervalObject = setInterval(function() {
       hostController.calculateStats(sessionId, function(data) {

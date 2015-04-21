@@ -11,7 +11,7 @@ body {
   font-size: 30px;
   color: #355065;
   margin: 2% 2% 2% 2%;
-  padding: 10%;
+  padding: 5%;
   text-align: center;
   border-radius: 10px;
 }
@@ -113,6 +113,25 @@ h3 {
 }
 
 /********************************/
+/*HOST LOGIN STYLES*/
+/********************************/
+
+#loginHost {
+  margin-left: -10px;
+  font-family: "Armata", sans-serif;
+  font-size: 24px;
+  width: 300px;
+  height: 60px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #c9d5cf;
+  border: 2px solid #355065;
+  margin-top: 10px;
+  color: #355065;
+}
+
+/********************************/
 /*HOST SESSION STYLES*/
 /********************************/
 
@@ -140,5 +159,4 @@ h3 {
   padding: 5px 5px;
   text-decoration: none;
 }
-
 

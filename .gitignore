@@ -1,6 +1,7 @@
 dist/
 node_modules/
 config.js
+npm-debug.log
 
 __MACOSX
 .DS_Store

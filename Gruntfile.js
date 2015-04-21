@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     //'grunt watch' runs the watch function
     watch: {
       jshint: {
-        files: ['public/client/**/*.js', 'server/**/*'],
+        files: ['public/client/**/*.js', 'server/**/*', 'test/**/*.js'],
         tasks: ['jshint', 'mochaTest']
       }
     }
