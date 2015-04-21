@@ -1,14 +1,14 @@
 module.exports = {
   facebookAuth : {
     prod: {
-      clientID : '1591541184427028', // Your App ID
-      clientSecret : '83767c63c564952975777eed7d290393', // Your App Secret
-      callbackURL : 'http://localhost.xip.io:3000/host/auth/facebook/callback'
+      clientID : '', // Your App ID
+      clientSecret : '', // Your App Secret
+      callbackURL : ''
     },
     dev: {
-      clientID : '1591541184427028',
-      clientSecret : '83767c63c564952975777eed7d290393',
-      callbackURL : 'http://localhost.xip.io:3000/host/auth/facebook/callback'
+      clientID : '',
+      clientSecret : '',
+      callbackURL : 
     }
   },
   twitterAuth : {
