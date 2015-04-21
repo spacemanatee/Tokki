@@ -1,5 +1,5 @@
 var Firebase = require('firebase');
-var dBRef = new Firebase('https://scorching-fire-8470.firebaseio.com/desertShark/');
+var dBRef = new Firebase('https://dazzling-heat-1012.firebaseio.com');
 
 // Helper methods
 var defaultCb = function(message) {
