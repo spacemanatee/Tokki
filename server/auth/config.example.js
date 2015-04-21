@@ -2,12 +2,12 @@ module.exports = {
   facebookAuth : {
     prod: {
       clientID : 'your-secret-clientID-here', // Your App ID
-      clientSecret : 'your-session-secret-here', // Your App Secret
+      clientSecret : 'your-client-secret-here', // Your App Secret
       callbackURL : 'http://localhost:3000/host/auth/facebook/callback'
     },
     dev: {
       clientID : 'your-secret-clientID-here',
-      clientSecret : 'your-session-secret-here',
+      clientSecret : 'your-client-secret-here',
       callbackURL : 'http://localhost:3000/host/auth/facebook/callback'
     }
   },
