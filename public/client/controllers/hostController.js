@@ -19,9 +19,10 @@ angular.module('tokki')
   // Opens a new session
   $scope.startSession = function() {
 
-    HostServices.startSession( function(newSessionId) {
-      console.log('now listening for votes on session: ' + newSessionId);
-      $scope.sessionId = newSessionId;
+    HostServices.startSession( function(data) {
+      console.log('now listening for votes on session: ' + data.session);
+      console.log("response.data in controller: ", data);
+      $scope.sessionId = data.session;
 
       HostServices.listen( function(sessionData) {
         $scope.userCount = sessionData.userCount || 0;
