@@ -1,4 +1,5 @@
 <!-- This is the host"s main view during lecture/event -->
+<div ui-view></div>
 
 <div class='statTags'>Session ID: <span>{{ sessionId }}</span></div>
 <!-- Current Average Feeling -->
@@ -13,3 +14,5 @@
 <!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
 
 <a href="#/hostMenu" id="endSession" ng-click="endSession()">End Session</a>
+
+<a ui-sref=".results">Test Show Results</a>
