@@ -1,4 +1,4 @@
-angular.module('tokki', ['ui.router']);
+angular.module('tokki', ['ui.router', 'ngFx', 'ngAnimate']);
 
 // These are the routes that are necessary for the project MVP.
 
@@ -48,5 +48,10 @@ angular.module('tokki')
       url: '/hostLogin',
       templateUrl: './views/hostLoginView.html',
       controller: 'AnalysisController'
+    })
+    .state('postQuestionView', {
+      url: '/postQuestion',
+      templateUrl: './views/postQuestionView.html',
+      controller: 'PostQuestionController'
     });
 });
