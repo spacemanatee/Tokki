@@ -48,5 +48,10 @@ angular.module('tokki')
       url: '/hostLogin',
       templateUrl: './views/hostLoginView.html',
       controller: 'AnalysisController'
+    })
+    .state('postQuestionView', {
+      url: '/postQuestion',
+      templateUrl: './views/postQuestionView.html',
+      controller: 'PostQuestionController'
     });
 });

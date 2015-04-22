@@ -1,0 +1,7 @@
+<!-- This is the home screen where the user may either log into an existing session, or host a new one -->
+
+<div id="question-header">Enter a question for the class</div>
+<form ng-submit="newQuestion()" >
+  <input id="question" type="text" ng-model="questionText" placeholder=""><br>
+  <input id="question-submit" type="submit" value="Submit" hidefocus="true" />
+</form>
