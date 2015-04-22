@@ -49,6 +49,13 @@ app.post('/question', function(req, res, next) {
   console.log("REQ BODY: ", req.body);
 
   dbUtils.addQuestionToDb({question: req.body.question});
+
+  dbUtils.getQuestions(function(results) {
+
+  console.log('RESULTS from DB: ', results);
+
+  });
+
 });
 
 app.use('/guest', guestRouter);
