@@ -1,7 +1,6 @@
 angular.module('tokki')
-  .controller('LoginController', ['$scope', '$state', '$location', function($scope, $state, $location) {
+  .controller('LoginController', ['$scope', '$state', '$location', '$timeout', function($scope, $state, $location, $timeout) {
 // TODO: Add loginServices back in
-
   $scope.init = function() {
 
   };
@@ -16,7 +15,7 @@ angular.module('tokki')
 
   $scope.newGuest = function() {
     // TODO: Pass in session code from the home view
-    window.location = '/#/guestSession/' + $scope.sessionId;
-  };
 
+      window.location = '/#/guestSession/' + $scope.sessionId;
+  };
 }]);

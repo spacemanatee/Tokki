@@ -5,6 +5,5 @@ angular.module('tokki')
     console.log('Question controller Init now!');
     $scope.testResult = 25678;
   };
-
   $scope.init();
 }]);
