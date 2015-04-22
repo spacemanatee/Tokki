@@ -12,9 +12,11 @@ var defaultCb = function(message) {
 };
 // Provides an easier way to access the desired reference
 var sessionsRef = function(userInfo) {
+  console.log('userInfo in sessionsRef', userInfo);
   return dBRef.child(userInfo.provider).child(userInfo.hostId).child('sessions');
 };
 var sessionRef = function(sessionInfo) {
+  console.log('sessionInfo in sessionRef', sessionInfo);
   return sessionsRef(sessionInfo).child(sessionInfo.sessionId);
 };
 // Ensures that the appropriate parameters are present
@@ -81,7 +83,12 @@ exports.addToDb = function(sessionInfo, voteInfo, cb) {
   if(!validateSession(sessionInfo)) {
     return;
   }
+  voteInfo.testing = 'hello';
+  console.log('sessionInfo', sessionInfo);
+  console.log('voteInfo', voteInfo);
+  console.log('cb', cb);
   cb = cb || defaultCb('Failed to add entry');
+  // writes votes to database
   sessionRef(sessionInfo).child('votes').push(voteInfo, cb);
 };
 
