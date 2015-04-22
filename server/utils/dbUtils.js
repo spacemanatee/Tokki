@@ -92,6 +92,18 @@ exports.addToDb = function(sessionInfo, voteInfo, cb) {
   sessionRef(sessionInfo).child('votes').push(voteInfo, cb);
 };
 
+exports.addQuestionToDb = function (sessionInfo, questionInfo, cb) {
+  console.log('addQuestionToDB', questionInfo);
+  cb = cb || defaultCb('Failed to add question');
+  sessionRef(sessionInfo).child('questions').push(questionInfo, cb);
+};
+
+/*
+sessionInfo in sessionRef { provider: 'facebook',
+  hostId: '10103112462162704',
+  sessionId: 'j8aor' }
+*/
+
 // Intended to retrieve sessions for host to choose a session from
 // Returns data in the form on an array sorted with latest first: [
 //   {
@@ -103,6 +115,7 @@ exports.addToDb = function(sessionInfo, voteInfo, cb) {
 //   },
 //   ...
 // ]
+
 exports.getSessionsFromDb = function(userInfo, cb) {
   cb = cb || defaultCb('Failed to retrieve sessions');
   if(!validateUser(userInfo)) {

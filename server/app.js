@@ -10,6 +10,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
 var config = require('./auth/config');
+var dbUtils = require('./utils/dbUtils');
 
 var app = express();
 
@@ -42,6 +43,21 @@ require('./auth/passport')(passport);
 app.get('/', function(req, res, next) {
   res.sendFile('/index.html');
 });
+
+/* POST from question page. */
+app.post('/question', function(req, res, next) {
+  console.log("REQ BODY: ", req.body);
+
+//  dbUtils.addQuestionToDb(req.body);
+
+  dbUtils.addQuestionToDb({
+      provider: 'QUESTIONS',
+      hostId: '11111',
+      sessionId: 'x'
+    }, {
+      question: req.body.question
+  });
+})
 
 app.use('/guest', guestRouter);
 app.use('/host', hostRouter);

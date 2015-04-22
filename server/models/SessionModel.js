@@ -75,7 +75,7 @@ exports.SessionModel = Backbone.Model.extend({
       this.set('sumVoteVals', this.get('sumVoteVals') + voteVal - vote.get('voteVal'));
       this.set('voteCount', this.get('voteCount') + (voteVal !== null) - (vote.get('voteVal') !== null));
       vote.set('voteVal', voteVal);
-      console.log('Adding to DB');
+
       dbUtils.addToDb({
           provider: this.get('provider'),
           hostId: this.get('hostId'),
