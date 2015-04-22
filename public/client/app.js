@@ -35,7 +35,7 @@ angular.module('tokki')
       //View that shows results of question sent by host
       url: '/results',
       templateUrl: './views/questionResultsView.html',
-      controller: 'questionResultsController'
+      controller: 'QuestionResultsController'
     })
     // Routes to the host's history of sessions
     .state('hostHistoryView', {
@@ -60,10 +60,5 @@ angular.module('tokki')
       url: '/postQuestion',
       templateUrl: './views/postQuestionView.html',
       controller: 'PostQuestionController'
-    })
-    .state('questionResultsView', {
-      url: '/hostSession',
-      templateUrl: './views/questionResultsView.html',
-      controller: 'questionResultsController'
     });
 });
