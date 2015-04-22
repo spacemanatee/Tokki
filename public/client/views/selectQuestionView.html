@@ -6,7 +6,7 @@
 </div>
 
 <div>
-  <form name= "myForm" ng-submit=""  >
-    <input id="question-submit" type="submit" value="Submit" hidefocus="true" ng-disable="!selectedList.length || selectedList.length < 1"/>
+  <form name= "myForm" ng-submit=" submitQuestion()">
+    <input id="question-submit" type="submit" value="Submit" hidefocus="true" ng-disabled=" selectedList.length < 1"/>
   </form>
 </div>

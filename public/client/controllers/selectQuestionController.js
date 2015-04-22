@@ -40,7 +40,7 @@ angular.module('tokki')
   }
 
   $scope.submitQuestion = function() {
-    console.log($scope.selectedList);
+    $scope.questions = $scope.selectedList;
   }
 
   $scope.loadQuestions();
