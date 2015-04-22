@@ -1,5 +1,5 @@
 angular.module('tokki')
-  .controller('PostQuestionController', ['$scope', '$state', '$location', function($scope, $state, $location) {
+  .controller('PostQuestionController', ['$scope', '$state', '$location', 'HostServices', function($scope, $state, $location, HostServices) {
 // TODO: Add loginServices back in
 
   $scope.init = function() {
@@ -7,7 +7,8 @@ angular.module('tokki')
   };
 
   $scope.newQuestion = function() {
-
+    console.log('fired! : ', $scope.questionText);
+    HostServices.postQuestion($scope.questionText);
   };
 
   $scope.logout = function() {

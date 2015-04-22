@@ -172,6 +172,7 @@ h3 {
 #question {
   width: 300px;
   height: 150px;
+  border: none;
 }
 
 #question-submit {

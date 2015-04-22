@@ -2,6 +2,8 @@
 
 <div id="question-header">Enter a question for the class</div>
 <form ng-submit="newQuestion()" >
-  <input id="question" type="text" ng-model="questionText" placeholder=""><br>
+  <textarea id="question" type="text" ng-model="questionText" placeholder=""></textarea><br>
   <input id="question-submit" type="submit" value="Submit" hidefocus="true" />
 </form>
+
+<a href="/#/hostMenu"><button class="hostMenuButtons" ng-click="">Back to Menu</button></a>
