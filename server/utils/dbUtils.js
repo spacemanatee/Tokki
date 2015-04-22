@@ -92,10 +92,10 @@ exports.addToDb = function(sessionInfo, voteInfo, cb) {
   sessionRef(sessionInfo).child('votes').push(voteInfo, cb);
 };
 
-exports.addQuestionToDb = function (sessionInfo, questionInfo, cb) {
-  console.log('addQuestionToDB', questionInfo);
+exports.addQuestionToDb = function (question, cb) {
+  console.log('addQuestionToDB', question);
   cb = cb || defaultCb('Failed to add question');
-  sessionRef(sessionInfo).child('questions').push(questionInfo, cb);
+  return dBRef.child('questions').push(question);
 };
 
 /*

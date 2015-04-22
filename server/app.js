@@ -48,16 +48,8 @@ app.get('/', function(req, res, next) {
 app.post('/question', function(req, res, next) {
   console.log("REQ BODY: ", req.body);
 
-//  dbUtils.addQuestionToDb(req.body);
-
-  dbUtils.addQuestionToDb({
-      provider: 'QUESTIONS',
-      hostId: '11111',
-      sessionId: 'x'
-    }, {
-      question: req.body.question
-  });
-})
+  dbUtils.addQuestionToDb({question: req.body.question});
+});
 
 app.use('/guest', guestRouter);
 app.use('/host', hostRouter);
