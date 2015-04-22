@@ -1,4 +1,4 @@
-angular.module('tokki', ['ui.router']);
+angular.module('tokki', ['ui.router', 'ngFx', 'ngAnimate']);
 
 // These are the routes that are necessary for the project MVP.
 
