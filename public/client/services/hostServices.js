@@ -18,7 +18,8 @@ angular.module('tokki')
       url: session.url + '/new'
     })
     .then(function(resp) {
-      session.id = resp.data;
+      session.id = resp.data.session; // resp.data.session
+      console.log("RESP.DATA from StartSession: ", resp.data);
       cb(resp.data);
     });
   };

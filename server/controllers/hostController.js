@@ -28,7 +28,15 @@ exports.registerSession = function(req, res) {
     hostId: hostInfo ? hostInfo.hostId : undefined,
     cb: function() {
       socketUtils.init(sessionId, function() {
-        res.send(sessionId); // Client will redirect to /#/host/sessionId
+        dbUtils.getQuestions(function(questions) {
+
+        console.log('REGISTER AND GET_QUESTIONS: ', questions);
+        var data = {};
+        data.session = sessionId;
+        data.questions = questions
+        res.send(data);
+        });
+     // Client will redirect to /#/host/sessionId
       });
     }
   });
