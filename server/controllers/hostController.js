@@ -33,7 +33,10 @@ exports.registerSession = function(req, res) {
         console.log('REGISTER AND GET_QUESTIONS: ', questions);
         var data = {};
         data.session = sessionId;
-        data.questions = questions
+        data.questions = [];
+        for (var key in questions) {
+          data.questions.push(questions[key]);
+        }
         res.send(data);
         });
      // Client will redirect to /#/host/sessionId
