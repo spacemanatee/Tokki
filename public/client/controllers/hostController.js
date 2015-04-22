@@ -19,6 +19,7 @@ angular.module('tokki')
   // Opens a new session
   $scope.startSession = function() {
 
+    $scope.loadQuestions(); // load question from database
     HostServices.startSession( function(data) {
       console.log('now listening for votes on session: ' + data.session);
       console.log("response.data in controller: ", data);
@@ -49,6 +50,25 @@ angular.module('tokki')
   $scope.hidePage = function(){
     $scope.show = false;
   };
+
+  $scope.loadQuestions = function() {
+    // should load from database, but now just to create a simulation list
+    $scope.questionLists =[{'question': 'What color is George Washington\'s white horse ?', 'selection': {A:'green', B:'red', C:'black', D:'maroon', E:'Non of the above'}}, 
+    {'question': 'What is an equalteral triangle ?', 'selection': {A:'All sides euqal', B:'all angle equal', C:'all of the above', D:'non of the above'}}];
+    $scope.selectedList=[];
+  }
+
+  $scope.toggleSelected = function(prompt) {
+    if ($scope.selectedList.length <1) {
+      $scope.selectedList.push(prompt);
+    }
+    
+  }
+
+  $scope.submitQuestion = function() {
+    $scope.questions = $scope.selectedList;
+  }
+
 
   $scope.show = true;
   $scope.startSession();

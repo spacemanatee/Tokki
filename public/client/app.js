@@ -60,10 +60,5 @@ angular.module('tokki')
       url: '/postQuestion',
       templateUrl: './views/postQuestionView.html',
       controller: 'PostQuestionController'
-    })
-    .state('selectQuestionView', {
-      url: '/selectQuestion',
-      templateUrl: './views/selectQuestionView.html',
-      controller: 'SelectQuestionController'
     });
 });
