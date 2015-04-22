@@ -55,11 +55,23 @@ angular.module('tokki')
     return session.upTime;
   };
 
+  var postQuestion = function(question){
+    return $http({
+      method: 'POST',
+      url: '/question',
+      data: {'question' : question }
+    })
+    .then(function(resp) {
+      console.log('message sent: ', question);
+    });
+  }
+
   return {
     startSession: startSession,
     listen: listen,
     endSession: endSession,
-    upTime: upTime
+    upTime: upTime,
+    postQuestion: postQuestion
   };
 
 });

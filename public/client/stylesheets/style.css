@@ -160,3 +160,21 @@ h3 {
   text-decoration: none;
 }
 
+/********************************/
+/*POST QUESTION VIEW STYLES*/
+/********************************/
+#question-header {
+  font-family: "Armata", sans-serif;
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+#question {
+  width: 300px;
+  height: 150px;
+  border: none;
+}
+
+#question-submit {
+  width: 100px;
+}
