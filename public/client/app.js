@@ -49,6 +49,7 @@ angular.module('tokki')
       templateUrl: './views/hostLoginView.html',
       controller: 'AnalysisController'
     })
+    //Routes to the host post question view
     .state('postQuestionView', {
       url: '/postQuestion',
       templateUrl: './views/postQuestionView.html',

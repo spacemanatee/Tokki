@@ -6,8 +6,8 @@ module.exports = {
       callbackURL : 'http://localhost:3000/host/auth/facebook/callback'
     },
     dev: {
-      clientID : 'your-secret-clientID-here',
-      clientSecret : 'your-client-secret-here',
+      clientID : 'your-secret-clientID-here', // Your App ID
+      clientSecret : 'your-client-secret-here', // Your App Secret
       callbackURL : 'http://localhost:3000/host/auth/facebook/callback'
     }
   },

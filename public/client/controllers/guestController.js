@@ -4,11 +4,11 @@ angular.module('tokki')
   // Holds rating values
   // Holds whether value is selected (for the gui)
   $scope.ratings = [
+  {value: 5, selected: null},
+  {value: 4, selected: null},
+  {value: 3, selected: null},
   {value: 2, selected: null},
-  {value: 1, selected: null},
-  {value: 0, selected: null},
-  {value:-1, selected: null},
-  {value:-2, selected: null}];
+  {value: 1, selected: null}];
 
   // Current Vote value
   $scope.currRating = null;
