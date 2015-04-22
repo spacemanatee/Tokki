@@ -1,0 +1,12 @@
+<!-- This is the screen for displaying a list of questions from database and let admin to choose which one to send to students. -->
+
+<div>hello</div>
+<div id="question-header" ng-repeat="prompt in questionLists" ng-model="questionLists">
+  <div ng-click="toggleSelected(prompt)">{{prompt.question}}</div>
+</div>
+
+<div>
+  <form name= "myForm" ng-submit=""  >
+    <input id="question-submit" type="submit" value="Submit" hidefocus="true" ng-disable="!selectedList.length || selectedList.length < 1"/>
+  </form>
+</div>
