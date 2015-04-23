@@ -50,11 +50,11 @@ app.post('/question', function(req, res, next) {
 
   dbUtils.addQuestionToDb(req.body);
 
-  // dbUtils.getQuestions(function(results) {
+  dbUtils.getQuestions(function(results) {
+    console.log('RESULTS POST QUESTION: ', results);
+    return res.send(results);
+  });
 
-  // console.log('RESULTS from DB: ', results);
-
-  // });
 
 });
 
