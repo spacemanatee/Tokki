@@ -19,11 +19,19 @@ angular.module('tokki')
   // Opens a new session
   $scope.startSession = function() {
 
-    $scope.loadQuestions(); // load question from database
     HostServices.startSession( function(data) {
       console.log('now listening for votes on session: ' + data.session);
       console.log("response.data in controller: ", data);
       $scope.sessionId = data.session;
+      $scope.questionLists=data.questions;
+      console.log($scope.questionLists);
+      $scope.answers={};
+      for (var i =0; i <$scope.questionLists.length; i++) {
+        $scope.questionLists[i].average=0;
+        $scope.questionLists[i].clicked=false;
+        $scope.questionLists[i].index=i;
+        $scope.answers[i]={A:0, B:0, C: 0, D:0, E:0};
+      }
 
       HostServices.listen( function(sessionData) {
         $scope.userCount = sessionData.userCount || 0;
@@ -31,7 +39,6 @@ angular.module('tokki')
         $scope.hisAvg = (sessionData.historicalAverage || 0).toFixed(2);
         if(!gotTime){
           startTime = moment() - HostServices.upTime();
-          console.log(startTime);
           gotTime = true;
           setTime();
         }
@@ -51,24 +58,18 @@ angular.module('tokki')
     $scope.show = false;
   };
 
-  $scope.loadQuestions = function() {
-    // should load from database, but now just to create a simulation list
-    $scope.questionLists =[{'question': 'What color is George Washington\'s white horse ?', 'selection': {A:'green', B:'red', C:'black', D:'maroon', E:'Non of the above'}, 'answer': 'E', 'clicked':false, 'average': 0}, 
-    {'question': 'What is an equalteral triangle ?', 'selection': {A:'All sides euqal', B:'all angle equal', C:'all of the above', D:'non of the above'}, 'answer': 'C','clicked':false, 'average': 0}];
-    $scope.selectedList=[];
-  }
 
 
   $scope.submitQuestion = function(prompt) {
     
+    console.log(prompt.index);
     HostServices.emitQuestion(prompt); // emit a question event with the prompt object data
-    prompt.clicked=true;
-    var questionStartTime= moment();
-    HostServices.listenForAnswer($scope.checkUserAnswers );
+    prompt.clicked = true;
+    HostServices.listenForAnswer($scope.checkUserAnswers);
     
   }
 
-  $scope.answers={A:0, B:0, C: 0, D:0, E:0};
+  
 
 
   $scope.checkUserAnswers = function(answer) {
@@ -77,7 +78,7 @@ angular.module('tokki')
 
   }
   var checkAvg= function (prompt) {
-    prompt.average= $scope.answers[prompt.answer]/ sumUpResponse($scope.answers) *100;
+    prompt.average= $scope.answers[prompt.index][prompt.answer]/ sumUpResponse($scope.answers[prompt.index]) *100;
   }
 
   var sumUpRespose = function(answers) {
@@ -89,15 +90,7 @@ angular.module('tokki')
   }
 
   // 5 mins or 20 ppl , push the curret result to the collection, reset the object counter, 
-  var checkTime = function(startTime, duration) {
 
-
-    
-  }
-
-  var checkAttendance = function(maxLimit) {
-    
-  }
 
 
 
