@@ -7,17 +7,29 @@ angular.module('tokki')
   };
 
   $scope.newQuestion = function() {
-    console.log('fired! : ', $scope.questionText);
-    HostServices.postQuestion($scope.questionText);
+    var questionObj = {
+      'question': $scope.questionText || '',
+      'A': $scope.answerA || '',
+      'B': $scope.answerB || '',
+      'C': $scope.answerC || '',
+      'D': $scope.answerD || '',
+      'E': $scope.answerE || '',
+      'correctAnswer': $scope.correctAnswer || ''
+    }
+
+    HostServices.postQuestion(questionObj);
+
+    //To clear the form on submit, reset each model and then call $setPristine
+    $scope.questionText = '';
+    $scope.answerA = '';
+    $scope.answerB = '';
+    $scope.answerC = '';
+    $scope.answerD = '';
+    $scope.answerE = '';
+    $scope.correctAnswer = '';
+    $scope.qForm.$setPristine();
   };
 
-  $scope.logout = function() {
 
-  };
-
-  $scope.newGuest = function() {
-    // TODO: Pass in session code from the home view
-    window.location = '/#/guestSession/' + $scope.sessionId;
-  };
 
 }]);

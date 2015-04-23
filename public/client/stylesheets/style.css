@@ -167,14 +167,34 @@ h3 {
   font-family: "Armata", sans-serif;
   font-size: 24px;
   padding-bottom: 10px;
+  display: block;
 }
 
 #question {
+  font-family: "Armata", sans-serif;
+  width: 500px;
+  height: 75px;
+  border: 1px solid #999999;
+  font-size: 16px;
+}
+
+.answer {
+  font-family: "Armata", sans-serif;
+  height: 20px;
   width: 300px;
-  height: 150px;
-  border: none;
+  font-size: 14px;
 }
 
 #question-submit {
   width: 100px;
+}
+
+#correctHeader {
+  font-family: "Armata", sans-serif;
+  font-size: 12pt;
+  display: inline;
+}
+
+#correctAnswer {
+  margin-right: 35px;
 }
