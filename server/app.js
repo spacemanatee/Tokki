@@ -55,6 +55,14 @@ app.post('/question', function(req, res, next) {
     return res.send(results);
   });
 
+});
+
+app.get('/question', function(req, res, next) {
+
+  dbUtils.getQuestions(function(results) {
+    console.log('RESULTS GET QUESTIONS: ', results);
+    return res.send(results);
+  });
 
 });
 
