@@ -98,13 +98,13 @@ exports.addToDb = function(sessionInfo, voteInfo, cb) {
 exports.addQuestionToDb = function(question, cb) {
   console.log('addQuestionToDB', question);
   cb = cb || defaultCb('Failed to add question');
-  console.log('addQuestionToDb cb:', cb);
   return dBRef.child('questions').push(question);
 };
 
 exports.getQuestions = function(cb) {
-  dBRef.child("questions").on("value", function(questions) {
+  dBRef.child("questions").once("value", function(questions) {
     var results = questions.val();
+    dBRef.child("questions").off("value");
     console.log('dbUtils.getQuestions before cb');
     cb(results);
   });
