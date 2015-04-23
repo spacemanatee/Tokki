@@ -63,7 +63,11 @@ angular.module('tokki')
       data: sendData
     })
     .then(function(resp) {
-      console.log('message sent: ', question);
+      var questions = [];
+      for (var key in resp.data) {
+        questions.push(resp.data[key]);
+      }
+      console.log("questions obj: ", questions);
     });
   }
 
