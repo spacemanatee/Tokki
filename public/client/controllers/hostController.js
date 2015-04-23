@@ -60,8 +60,10 @@ angular.module('tokki')
 
 
   $scope.submitQuestion = function(prompt) {
+    
     HostServices.emitQuestion(prompt); // emit a question event with the prompt object data
     prompt.clicked=true;
+    var questionStartTime= moment();
     HostServices.listenForAnswer($scope.checkUserAnswers );
     
   }
@@ -88,6 +90,8 @@ angular.module('tokki')
 
   // 5 mins or 20 ppl , push the curret result to the collection, reset the object counter, 
   var checkTime = function(startTime, duration) {
+
+
     
   }
 
