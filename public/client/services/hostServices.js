@@ -44,6 +44,11 @@ angular.module('tokki')
       console.error(err);
     });
   };
+  // emit the question
+  var emitQuestion = function(prompt) {
+    session.socket.emit('question', prompt);
+
+  }
 
   // Emit end to end a session
   var endSession = function() {
@@ -71,9 +76,17 @@ angular.module('tokki')
     });
   }
 
+  var listenForAnswer = function (cb) {
+    session.socket.on('answer', function(answer){
+      cb(answer);
+    });
+  }
+
   return {
     startSession: startSession,
     listen: listen,
+    emitQuestion: emitQuestion,
+    listenForAnswer: listenForAnswer,
     endSession: endSession,
     upTime: upTime,
     postQuestion: postQuestion

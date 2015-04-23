@@ -9,7 +9,6 @@
   <script>
   $( document ).ready(function() {
     console.log( "ready!?!" );
-
     var socket = io();
     $('form').submit(function(){
       socket.emit('questionForStudent', $('#m').val());
@@ -23,17 +22,32 @@
   </script>
 
 
-  <div ui-view></div>
+<div id="sessionStats">
+<div >Session ID: <span>{{ sessionId }}</span></div>
+<!-- Number of Voters in Room -->
+<div >Number of Voters: <span>{{ userCount }}</span></div>
+<!-- Time -->
+<div >Time: <span>{{ time }}</span></div>
+</div>
 
-  <div class='statTags'>Session ID: <span>{{ sessionId }}</span></div>
-  <!-- Current Average Feeling -->
-  <div class='statTags'>Current Average: <span>{{ currAvg }}</span></div>
-  <!-- Overall Average Feeling -->
-  <div class='statTags'>Historical Average: <span>{{ hisAvg }}</span></div>
-  <!-- Number of Voters in Room -->
-  <div class='statTags'>Number of Voters: <span>{{ userCount }}</span></div>
-  <!-- Time -->
-  <div class='statTags'>Time: <span>{{ time }}</span></div>
+
+<!-- Current Average Feeling -->
+<div id="historyStats">
+<div >Current Average: <span>{{ currAvg }}</span></div>
+<!-- Overall Average Feeling -->
+<div >Historical Average: <span>{{ hisAvg }}</span></div>
+</div>
+
+
+<div id="question-header" ng-repeat="prompt in questionLists track by $index" ng-model="questionLists">
+    <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">#{{$index}}.   {{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked">{{prompt.average}} %</div>
+</div>
+
+
+
+<!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
+
+
 
   <!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
 

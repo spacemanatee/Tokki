@@ -240,3 +240,25 @@ tr:hover td {
 {
     list-style-type: none;
 }
+
+
+.grayOut {
+  background-color: #999999;
+}
+
+
+#sessionStats {
+  text-align: left;
+  font-size: 10px;
+  vertical-align: left;
+}
+
+#historyStats{
+  border-radius:10px;
+  border-width: 300px;
+  border-height: 100px;
+  vertical-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
