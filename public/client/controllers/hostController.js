@@ -53,21 +53,42 @@ angular.module('tokki')
 
   $scope.loadQuestions = function() {
     // should load from database, but now just to create a simulation list
-    $scope.questionLists =[{'question': 'What color is George Washington\'s white horse ?', 'selection': {A:'green', B:'red', C:'black', D:'maroon', E:'Non of the above'}}, 
-    {'question': 'What is an equalteral triangle ?', 'selection': {A:'All sides euqal', B:'all angle equal', C:'all of the above', D:'non of the above'}}];
+    $scope.questionLists =[{'question': 'What color is George Washington\'s white horse ?', 'selection': {A:'green', B:'red', C:'black', D:'maroon', E:'Non of the above'}, 'answer': 'E', 'clicked':false, 'average': 0}, 
+    {'question': 'What is an equalteral triangle ?', 'selection': {A:'All sides euqal', B:'all angle equal', C:'all of the above', D:'non of the above'}, 'answer': 'C','clicked':false, 'average': 0}];
     $scope.selectedList=[];
   }
 
-  $scope.toggleSelected = function(prompt) {
-    if ($scope.selectedList.length <1) {
-      $scope.selectedList.push(prompt);
-    }
+
+  $scope.submitQuestion = function(prompt) {
+    HostServices.emitQuestion(prompt); // emit a question event with the prompt object data
+    prompt.clicked=true;
+    HostServices.listenForQuestion($scope.checkUserAnswers );
     
   }
 
-  $scope.submitQuestion = function() {
-    $scope.questions = $scope.selectedList;
+  $scope.answers={A:0, B:0, C: 0, D:0, E:0};
+
+
+  $scope.checkUserAnswers = function(answer) {
+    $scope.answers.answer +=1;
+    checkAvg(prompt);
+
   }
+  var checkAvg= function (prompt) {
+    prompt.average= $scope.answers[prompt.answer]/ sumUpResponse($scope.answers) *100;
+  }
+
+  var sumUpRespose= function(answers) {
+    var sum =0; 
+    for (var key in answers) {
+      sum+= answers[key];
+    }
+    return sum;
+  }
+
+  // 5 mins or 20 ppl , push the curret result to the collection, reset the object counter, 
+
+
 
 
   $scope.show = true;

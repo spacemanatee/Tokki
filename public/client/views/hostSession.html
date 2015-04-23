@@ -1,7 +1,7 @@
 <!-- This is the host"s main view during lecture/event -->
 <div ng-show="show">
 
-<<<<<<< HEAD
+
   <!-- Socket.io Messages -->
   <ul id="messages"></ul>
   <form action="">
@@ -23,34 +23,6 @@
   });
   </script>
 
-=======
-
-
-<div class='statTags'>Session ID: <span>{{ sessionId }}</span></div>
-<!-- Current Average Feeling -->
-<div class='statTags'>Current Average: <span>{{ currAvg }}</span></div>
-<!-- Overall Average Feeling -->
-<div class='statTags'>Historical Average: <span>{{ hisAvg }}</span></div>
-<!-- Number of Voters in Room -->
-<div class='statTags'>Number of Voters: <span>{{ userCount }}</span></div>
-<!-- Time -->
-<div class='statTags'>Time: <span>{{ time }}</span></div>
-
-
-<div id="question-header" ng-repeat="prompt in questionLists" ng-model="questionLists">
-  <form  ng-submit=" submitQuestion()">
-    <div>{{prompt.question}}</div>
-    <input id="question-submit" type="submit" value="Submit" hidefocus="true" ng-disabled=" selectedList.length < 1"/>
-  </form>
-</div>
-
-
-</div>
-<!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
-
-
-<a href="#/hostMenu" id="endSession" ng-click="endSession()">End Session</a>
->>>>>>> transfer the question view to the session page
 
   <div ui-view></div>
 
