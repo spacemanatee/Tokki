@@ -198,3 +198,8 @@ h3 {
 #correctAnswer {
   margin-right: 35px;
 }
+
+#messages ul
+{
+    list-style-type: none;
+}
