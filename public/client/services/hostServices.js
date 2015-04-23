@@ -56,11 +56,11 @@ angular.module('tokki')
     return session.upTime;
   };
 
-  var postQuestion = function(question){
+  var postQuestion = function(sendData){
     return $http({
       method: 'POST',
       url: '/question',
-      data: {'question' : question }
+      data: sendData
     })
     .then(function(resp) {
       console.log('message sent: ', question);

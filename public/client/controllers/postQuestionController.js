@@ -7,17 +7,20 @@ angular.module('tokki')
   };
 
   $scope.newQuestion = function() {
-    console.log('fired! : ', $scope.questionText);
-    HostServices.postQuestion($scope.questionText);
+    var questionObj = {
+      'question': $scope.questionText || '',
+      'A': $scope.answerA || '',
+      'B': $scope.answerB || '',
+      'C': $scope.answerC || '',
+      'D': $scope.answerD || '',
+      'E': $scope.answerE || '',
+      'correctAnswer': $scope.correctAnswer || ''
+    }
+
+
+    HostServices.postQuestion(questionObj);
   };
 
-  $scope.logout = function() {
 
-  };
-
-  $scope.newGuest = function() {
-    // TODO: Pass in session code from the home view
-    window.location = '/#/guestSession/' + $scope.sessionId;
-  };
 
 }]);
