@@ -1,15 +1,16 @@
 <!-- This is the host"s main page. New sessions can be started here, historic sessions can be viewed here. -->
-
+<div ng-show="show">
   <!-- The new session button launches a new host session upon click, and also reroutes us to the host session page. -->
-  <a href="#/hostSession" ng-click="startSession()"><button class="hostMenuButtons" id="newSession">New Session</button></a>
+  <a href="#/hostSession" ng-click="startSession()"><button class="hostMenuButtons" id="newSession" ng-click="hidePage()">New Session</button></a>
   <br>
 
-  <a href="#/hostHistoryView" ng-click="sessionHistory()"><button class="hostMenuButtons" id="sessionHistory">View History</button></a>
+  <a href="#/hostHistoryView" ng-click="sessionHistory()"><button class="hostMenuButtons" id="sessionHistory" ng-click="hidePage()">View History</button></a>
   <br>
 
-  <a href="#/postQuestion"><button class="hostMenuButtons" id="postQuestion" ng-click="">Post a Question</button></a>
+  <a href="#/postQuestion"><button class="hostMenuButtons" id="postQuestion" ng-click="hidePage()">Post a Question</button></a>
   <br>
 
   <!-- This button logs out the current host. Currently, it will send the user to the home screen -->
-  <a href="#/home"><button class="hostMenuButtons" id="logout" ng-click="">Log Out</button></a>
+  <a href="#/home"><button class="hostMenuButtons" id="logout" ng-click="hidePage()">Log Out</button></a>
 
+</div>

@@ -1,8 +1,8 @@
 <!--This is the view where the host logs in -->
 
-
+<div ng-show="show">
 <!--  <a href="#/hostSession" ng-click="startSession()"><button class="hostMenuButtons" id="newSession">Anonymous Session</button></a> -->
   <br>
 
-  <a href="/host/auth/facebook"><button id="loginHost">Log In with Facebook</button></a>
-
+  <a href="/host/auth/facebook"><button id="loginHost" ng-click="hidePage()">Log In with Facebook</button></a>
+</div>

@@ -29,6 +29,11 @@ angular.module('tokki')
     AnalysisServices.sessionAnalysis();
   };
 
+  $scope.hidePage = function(){
+    $scope.show = false;
+  }
+
+  $scope.show = true;
   $scope.sessionHistory();
 
 }]);

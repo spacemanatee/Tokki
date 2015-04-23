@@ -30,6 +30,10 @@ angular.module('tokki')
     $scope.qForm.$setPristine();
   };
 
+  $scope.hidePage = function(){
+    $scope.show = false;
+  }
 
+  $scope.show = true;
 
 }]);

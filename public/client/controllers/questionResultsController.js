@@ -6,5 +6,10 @@ angular.module('tokki')
     $scope.testResult = 25678;
   };
 
+  $scope.hidePage = function(){
+    $scope.show = false;
+  }
+
+  $scope.show = true;
   $scope.init();
 }]);

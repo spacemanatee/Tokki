@@ -19,4 +19,9 @@ angular.module('tokki')
     window.location = '/#/guestSession/' + $scope.sessionId;
   };
 
+  $scope.hidePage = function(){
+    $scope.show = false;
+  }
+
+  $scope.show = true;
 }]);
