@@ -98,6 +98,10 @@ function onListening() {
     console.log('server.js:  message for student: ' + msg);
     io.emit('questionForStudent', msg);
   });
+  socket.on('studentAnswer', function(msg){
+    console.log('server.js:  studentAnswer(!!!): ' + msg);
+    io.emit('studentAnswer', msg);
+  });
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
