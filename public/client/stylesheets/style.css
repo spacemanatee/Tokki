@@ -28,6 +28,24 @@ h3 {
   color: #355065;
 }
 
+th {
+  font-size: 18pt;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-bottom: 1px solid #355065;
+}
+
+td {
+  font-size: 16pt;
+}
+
+tr:nth-child(odd) td {
+  background: #EBEBEB;
+}
+
+tr:hover td {
+  background: #839EB2;
+}
 
 /********************************/
 /*GUEST SESSION STYLES*/
@@ -197,4 +215,22 @@ h3 {
 
 #correctAnswer {
   margin-right: 35px;
+}
+
+/********************************/
+/*SESSION HISTORY VIEW STYLES*/
+/********************************/
+
+.deleteSessionButton {
+  font-family: "Armata", sans-serif;
+  font-size: 16px;
+  width: 120px;
+  height: 24px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #c9d5cf;
+  border: 2px solid #355065;
+  margin-top: 10px;
+  color: #355065;
 }
