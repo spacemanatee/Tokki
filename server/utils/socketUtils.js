@@ -7,7 +7,7 @@ exports.init = function(sessionId, done) {
   if (!io) {
     io = require('../../server').io;
   }
-
+  console.log('socketUtils init!!!!!')
   var sessionGuestIo = io.of(sessionId);
   sessionGuestIo.on('connect', function(socket) {
     socket.on('vote', function(voteVal) {
@@ -38,5 +38,6 @@ exports.init = function(sessionId, done) {
     });
   });
 
+  console.log('done function here:', done);
   done();
 };

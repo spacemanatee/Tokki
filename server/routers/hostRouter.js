@@ -5,7 +5,7 @@ module.exports = function(app, passport) {
   app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/hostMenu', failureRedirect: '/#/host/login' }));
   app.post('/logout', hostController.logout);
   app.post('/new', isLoggedIn, hostController.registerSession);
-  app.post('/newTrial', hostController.registerSession);
+  // app.post('/newTrial', hostController.registerSession);
   app.get('/old/:sessionId', isLoggedIn, hostController.retrieveSession);
   app.get('/old', isLoggedIn, hostController.retrieveSessions);
   app.get('/:sessionId', hostController.redirect);

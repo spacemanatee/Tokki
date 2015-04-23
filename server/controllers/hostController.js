@@ -22,24 +22,28 @@ exports.logout = function(req, res) {
 // Begins listening to a session
 // TODO: Make it so anonymous sessions can be saved afterwards
 exports.registerSession = function(req, res) {
+  console.log("TRIGGER registerSession");
   var hostInfo = req.session ? req.session.passport.user : undefined;
   var sessionId = sessions.addNewSession({
     provider: hostInfo ? hostInfo.provider : undefined,
     hostId: hostInfo ? hostInfo.hostId : undefined,
     cb: function() {
+      // console.log("THIS OBJECT: ", this);
       socketUtils.init(sessionId, function() {
         dbUtils.getQuestions(function(questions) {
 
-        console.log('REGISTER AND GET_QUESTIONS: ', questions);
-        var data = {};
-        data.session = sessionId;
-        data.questions = [];
-        for (var key in questions) {
-          data.questions.push(questions[key]);
-        }
-        res.send(data);
+          console.log('REGISTER AND GET_QUESTIONS: ', questions);
+          var data = {};
+          data.session = sessionId;
+          data.questions = [];
+          for (var key in questions) {
+            data.questions.push(questions[key]);
+          }
+          console.log('line before resposne!')
+          res.send(data);
+          // attempting to send back old response object
+          // new to create new response
         });
-     // Client will redirect to /#/host/sessionId
       });
     }
   });
