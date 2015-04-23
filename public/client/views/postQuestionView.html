@@ -1,7 +1,7 @@
 <!-- This is the home screen where the user may either log into an existing session, or host a new one -->
 
 <div class="question-header">Enter a question for the class</div>
-<form ng-submit="newQuestion()" >
+<form name="qForm" ng-submit="newQuestion()" >
   <textarea id="question" type="text" ng-model="questionText" placeholder=""></textarea><br>
   <div class="question-header">Answers:</div>
   <span class="question-header">A:</span>

@@ -17,8 +17,17 @@ angular.module('tokki')
       'correctAnswer': $scope.correctAnswer || ''
     }
 
-
     HostServices.postQuestion(questionObj);
+
+    //To clear the form on submit, reset each model and then call $setPristine
+    $scope.questionText = '';
+    $scope.answerA = '';
+    $scope.answerB = '';
+    $scope.answerC = '';
+    $scope.answerD = '';
+    $scope.answerE = '';
+    $scope.correctAnswer = '';
+    $scope.qForm.$setPristine();
   };
 
 
