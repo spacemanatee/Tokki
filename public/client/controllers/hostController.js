@@ -46,7 +46,11 @@ angular.module('tokki')
     HostServices.endSession();
   };
 
+  $scope.hidePage = function(){
+    $scope.show = false;
+  };
 
+  $scope.show = true;
   $scope.startSession();
 
 }]);

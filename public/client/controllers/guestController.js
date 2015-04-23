@@ -41,6 +41,12 @@ angular.module('tokki')
     }
   };
 
+  $scope.hidePage = function(){
+    $scope.show = false;
+  }
+
+  $scope.show = true;
+
   // This will be given before this page loads.
   console.log('$location: ' + $location.path().split('/')[2]);
   $scope.init($location.path().split('/')[2]);

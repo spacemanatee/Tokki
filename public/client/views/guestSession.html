@@ -1,7 +1,8 @@
 <!-- The view where guests vote -->
-
+<div ng-show="show">
 <!-- This display the question/ prompt -->
 <div> Test Question</div>
 
 <!-- The text in ng-repeat is placeholder text until we get it connected to the controller properly -->
 <div class="ratings" ng-repeat="rating in ratings" ng-class="rating.selected" ng-click="vote(rating)"><h3 id="ratingText">{{rating.value}}</h3></div>
+</div>

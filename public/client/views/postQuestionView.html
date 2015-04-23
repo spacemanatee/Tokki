@@ -1,5 +1,5 @@
 <!-- This is the home screen where the user may either log into an existing session, or host a new one -->
-
+<div ng-show="show">
 <div class="question-header">Enter a question for the class</div>
 <form name="qForm" ng-submit="newQuestion()" >
   <textarea id="question" type="text" ng-model="questionText" placeholder=""></textarea><br>
@@ -25,4 +25,5 @@
   <input id="question-submit" type="submit" value="Submit" hidefocus="true" />
 </form>
 
-<a href="/#/hostMenu"><button class="hostMenuButtons" ng-click="">Back to Menu</button></a>
+<a href="/#/hostMenu"><button class="hostMenuButtons" ng-click="hidePage()">Back to Menu</button></a>
+</div>

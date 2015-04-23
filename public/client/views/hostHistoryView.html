@@ -1,5 +1,6 @@
 <!-- A list of a host's historic sessions.
  Links to Analysis view per session -->
+<div ng-show="show">
 <h3>Select a session:</h3>
 <!-- Where historic sessions are appended -->
 <div ng-app ng-model="tokki">
@@ -15,7 +16,7 @@
     <!-- Additional sessions appended-->
     <!--<tr><td colspan="5" ></td></tr> -->
     <tr ng-repeat="session in sessions | orderBy: session.startTime">
-      <td><a href = "#/api/"+session.id >{{session.sessionId}} </td>
+      <td><a href="#/api/"+session.id ng-click="hidePage()">{{session.sessionId}} </td>
       <td><mydate>{{ session.startTime | date:'yyyy-MM-dd HH:mm'}}</mydate></td>
       <!--Duration is in milliseconds (ms)
           Divided to represent minutes, one sig fig-->
@@ -26,4 +27,5 @@
       <!--<tr><td colspan="5"></tr> -->
   </tbody>
 </table>
+</div>
 
