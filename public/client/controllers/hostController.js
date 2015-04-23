@@ -1,7 +1,5 @@
 angular.module('tokki')
-  .controller('HostController', ['$scope', '$interval', 'HostServices', '$timeout', function($scope, $interval, HostServices, $timeout) {
-
-
+  .controller('HostController', ['$scope', '$interval', 'HostServices', function($scope, $interval, HostServices) {
 
     $scope.sessionId = 'no current session';
     $scope.currAvg = 0;
@@ -49,5 +47,4 @@ angular.module('tokki')
 
 
     $scope.startSession();
-  },100);
 }]);

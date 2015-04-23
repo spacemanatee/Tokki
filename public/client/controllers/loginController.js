@@ -1,5 +1,5 @@
 angular.module('tokki')
-  .controller('LoginController', ['$scope', '$state', '$location', '$timeout', function($scope, $state, $location, $timeout) {
+  .controller('LoginController', ['$scope', '$state', '$location', function($scope, $state, $location) {
 // TODO: Add loginServices back in
   $scope.init = function() {
 
