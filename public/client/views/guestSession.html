@@ -7,7 +7,7 @@
 <!-- Socket.io Messages -->
 <ul id="messages"></ul>
 <form action="">
-  <input id="m" autocomplete="off" /><button>Send response to Teacher</button>
+  <input id="m" autocomplete="off" /><button>Send answer</button>
 </form>
 <script>
 $( document ).ready(function() {
@@ -15,7 +15,7 @@ $( document ).ready(function() {
 
   var socket = io();
   $('form').submit(function(){
-    socket.emit('questionForStudent', $('#m').val());
+    socket.emit('studentAnswer', $('#m').val());
     $('#m').val('');
     return false;
   });

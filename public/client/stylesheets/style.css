@@ -217,6 +217,7 @@ tr:hover td {
   margin-right: 35px;
 }
 
+
 /********************************/
 /*SESSION HISTORY VIEW STYLES*/
 /********************************/
@@ -233,4 +234,9 @@ tr:hover td {
   border: 2px solid #355065;
   margin-top: 10px;
   color: #355065;
+} 
+
+#messages
+{
+    list-style-type: none;
 }
