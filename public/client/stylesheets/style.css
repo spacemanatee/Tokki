@@ -167,12 +167,18 @@ h3 {
   font-family: "Armata", sans-serif;
   font-size: 24px;
   padding-bottom: 10px;
+  display: block;
 }
 
 #question {
+  width: 500px;
+  height: 75px;
+  border: 1px solid #999999;
+}
+
+.answer {
+  height: 25px;
   width: 300px;
-  height: 150px;
-  border: none;
 }
 
 #question-submit {

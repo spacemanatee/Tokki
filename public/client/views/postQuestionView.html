@@ -1,8 +1,19 @@
 <!-- This is the home screen where the user may either log into an existing session, or host a new one -->
 
-<div id="question-header">Enter a question for the class</div>
+<div class="question-header">Enter a question for the class</div>
 <form ng-submit="newQuestion()" >
   <textarea id="question" type="text" ng-model="questionText" placeholder=""></textarea><br>
+  <div class="question-header">Answers:</div>
+  <span class="question-header">A:</span>
+  <textarea class="answer" type="text" ng-model="answerA" placeholder=""></textarea><br>
+  <span class="question-header">B:</span>
+  <textarea class="answer" type="text" ng-model="answerB" placeholder=""></textarea><br>
+  <span class="question-header">C:</span>
+  <textarea class="answer" type="text" ng-model="answerC" placeholder=""></textarea><br>
+  <span class="question-header">D:</span>
+  <textarea class="answer" type="text" ng-model="answerD" placeholder=""></textarea><br>
+  <span class="question-header">E:</span>
+  <textarea class="answer" type="text" ng-model="answerE" placeholder=""></textarea><br>
   <input id="question-submit" type="submit" value="Submit" hidefocus="true" />
 </form>
 
