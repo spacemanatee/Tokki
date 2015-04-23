@@ -163,16 +163,30 @@ h3 {
 /********************************/
 /*POST QUESTION VIEW STYLES*/
 /********************************/
-#question-header {
+.question-header {
   font-family: "Armata", sans-serif;
   font-size: 24px;
-  padding-bottom: 10px;
+}
+
+#correctAnswer {
+  display: block;
 }
 
 #question {
+  font-family: "Armata", sans-serif;
+  width: 450px;
+  height: 45px;
+  border: 1px solid #999999;
+  font-size: 14pt;
+}
+
+.answers {
+  font-family: "Armata", sans-serif;
   width: 300px;
-  height: 150px;
-  border: none;
+  height: 20px;
+  border: 1px solid #999999;
+  font-size: 14pt;
+  margin-top: 7px;
 }
 
 #question-submit {
