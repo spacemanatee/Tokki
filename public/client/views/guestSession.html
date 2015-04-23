@@ -3,6 +3,29 @@
 <!-- This display the question/ prompt -->
 <div> Test Question</div>
 
+
+<!-- Socket.io Messages -->
+<ul id="messages"></ul>
+<form action="">
+  <input id="m" autocomplete="off" /><button>Send response to Teacher</button>
+</form>
+<script>
+$( document ).ready(function() {
+  console.log( "ready!?!" );
+
+  var socket = io();
+  $('form').submit(function(){
+    socket.emit('questionForStudent', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+  socket.on('questionForStudent', function(msg){
+    $('#messages').append($('<li>').text(msg));
+  });
+});
+</script>
+
+
 <!-- The text in ng-repeat is placeholder text until we get it connected to the controller properly -->
 <div class="ratings" ng-repeat="rating in ratings" ng-class="rating.selected" ng-click="vote(rating)"><h3 id="ratingText">{{rating.value}}</h3></div>
 </div>
