@@ -24,6 +24,35 @@
   </script>
 
 
+
+<div id="sessionStats">
+<div >Session ID: <span>{{ sessionId }}</span></div>
+<!-- Number of Voters in Room -->
+<div >Number of Voters: <span>{{ userCount }}</span></div>
+<!-- Time -->
+<div >Time: <span>{{ time }}</span></div>
+</div>
+
+
+<!-- Current Average Feeling -->
+<div id="historyStats">
+<div >Current Average: <span>{{ currAvg }}</span></div>
+<!-- Overall Average Feeling -->
+<div >Historical Average: <span>{{ hisAvg }}</span></div>
+</div>
+
+
+<div id="question-header" ng-repeat="prompt in questionLists" ng-model="questionLists">
+    <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">{{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked">{{prompt.average}} %</div>
+</div>
+
+
+</div>
+<!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
+
+
+<a href="#/hostMenu" id="endSession" ng-click="endSession()">End Session</a>
+
   <div ui-view></div>
 
   <div class='statTags'>Session ID: <span>{{ sessionId }}</span></div>

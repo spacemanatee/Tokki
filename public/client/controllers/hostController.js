@@ -62,7 +62,7 @@ angular.module('tokki')
   $scope.submitQuestion = function(prompt) {
     HostServices.emitQuestion(prompt); // emit a question event with the prompt object data
     prompt.clicked=true;
-    HostServices.listenForQuestion($scope.checkUserAnswers );
+    HostServices.listenForAnswer($scope.checkUserAnswers );
     
   }
 
@@ -78,7 +78,7 @@ angular.module('tokki')
     prompt.average= $scope.answers[prompt.answer]/ sumUpResponse($scope.answers) *100;
   }
 
-  var sumUpRespose= function(answers) {
+  var sumUpRespose = function(answers) {
     var sum =0; 
     for (var key in answers) {
       sum+= answers[key];
@@ -87,6 +87,13 @@ angular.module('tokki')
   }
 
   // 5 mins or 20 ppl , push the curret result to the collection, reset the object counter, 
+  var checkTime = function(startTime, duration) {
+    
+  }
+
+  var checkAttendance = function(maxLimit) {
+    
+  }
 
 
 
