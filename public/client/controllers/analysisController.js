@@ -29,6 +29,11 @@ angular.module('tokki')
     AnalysisServices.sessionAnalysis();
   };
 
+  $scope.deleteSession = function(session){
+    console.log('delete button pressed');
+    AnalysisServices.deleteSession(session);
+  }
+
   $scope.hidePage = function(){
     $scope.show = false;
   }

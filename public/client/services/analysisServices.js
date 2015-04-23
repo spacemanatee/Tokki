@@ -40,10 +40,21 @@ angular.module('tokki')
     });
   };
 
+  var deleteSession = function(sessionId){
+    return $http({
+      method: 'POST',
+      url: '/deletesession',
+      data: sessionId
+    })
+    .then(function(resp) {
+      console.log('message sent: ', question);
+    });
+  };
 
   return {
     sessionHistory: sessionHistory,
-    sessionAnalysis: sessionAnalysis
+    sessionAnalysis: sessionAnalysis,
+    deleteSession: deleteSession
   };
 
 });
