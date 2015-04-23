@@ -1,7 +1,6 @@
 <!-- This is the host"s main view during lecture/event -->
 <div ng-show="show">
 
-
   <!-- Socket.io Messages -->
   <ul id="messages"></ul>
   <form action="">
@@ -10,7 +9,6 @@
   <script>
   $( document ).ready(function() {
     console.log( "ready!?!" );
-
     var socket = io();
     $('form').submit(function(){
       socket.emit('questionForStudent', $('#m').val());
@@ -22,7 +20,6 @@
     });
   });
   </script>
-
 
 
 <div id="sessionStats">
@@ -49,11 +46,6 @@
 
 
 <!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
-
-
-<a href="#/hostMenu" id="endSession" ng-click="endSession()">End Session</a>
-
-  <div ui-view></div>
 
 
 
