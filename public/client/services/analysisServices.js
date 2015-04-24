@@ -40,13 +40,14 @@ angular.module('tokki')
     });
   };
 
-  var deleteSession = function(sessionId){
+  var deleteSession = function(sessionId,cb){
     return $http({
       method: 'DELETE',
       url: '/deletesession/' + sessionId
     })
     .then(function(resp) {
-      console.log(resp);
+      console.log("RESP: ", resp);
+      cb();
     });
   };
 
