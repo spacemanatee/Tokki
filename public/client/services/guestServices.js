@@ -50,6 +50,7 @@ angular.module('tokki')
     if(session.socket){
       console.log('answer:' + answerData);
       session.socket.emit('studentAnswer', answerData);
+      console.log('here we are after emit');
     }
   };
 
