@@ -56,9 +56,19 @@ angular.module('tokki')
       controller: 'AnalysisController'
     })
     //Routes to the host post question view
-    .state('postQuestionView', {
+    .state('questionMenu', {
+      url: '/questionMenu',
+      templateUrl: './views/questionMenuView.html',
+      controller: 'PostQuestionController'
+    })
+    .state('questionMenu.postQuestion', {
       url: '/postQuestion',
       templateUrl: './views/postQuestionView.html',
       controller: 'PostQuestionController'
+    })
+    .state('questionMenu.allQuestions', {
+      url: '/allQuestions',
+      templateUrl: './views/allQuestionsView.html',
+      controller: 'AllQuestionsController'
     });
 });

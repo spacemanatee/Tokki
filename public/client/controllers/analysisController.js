@@ -40,5 +40,4 @@ angular.module('tokki')
 
   $scope.show = true;
   $scope.sessionHistory();
-
 }]);
