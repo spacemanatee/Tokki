@@ -61,6 +61,16 @@ angular.module('tokki')
     return session.upTime;
   };
 
+  var getQuestions = function(cb){
+    return $http({
+      method: 'GET',
+      url: '/question'
+    })
+    .then(function(resp){
+      cb(resp.data);
+    });
+  };
+
   var postQuestion = function(sendData){
     return $http({
       method: 'POST',
@@ -89,6 +99,7 @@ angular.module('tokki')
     listenForAnswer: listenForAnswer,
     endSession: endSession,
     upTime: upTime,
+    getQuestions: getQuestions,
     postQuestion: postQuestion
   };
 
