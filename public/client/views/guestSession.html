@@ -15,12 +15,19 @@ $( document ).ready(function() {
     $('#m').val('');
     return false;
   });
+
   socket.on('questionForStudent', function(msg){
-    console.log('hahaha');
-    $('#messages').append($('<li>').text(msg));
+    $('#messages').text("");
+    $('#messages').append($('<li class="qMessage">').text("Q:  " + msg.question)).append('<p>');
+    var ansLetters = ['A','B','C','D','E'];
+    for(var i=0; i<ansLetters.length;i++) {
+      $('#messages').append($('<div class="aMessage">').text(ansLetters[i] + ":  " + msg[ansLetters[i]]));
+    }
+    $('#messages').append('<p>');
     $('#ratingSection').css({display: 'none'});
     $('#answerSection').css({display: 'block'});
   });
+
   $('#answerSection').on('click', function(){
     $('#answerSection').css({display: 'none'});
     $('#ratingSection').css({display: 'block'});

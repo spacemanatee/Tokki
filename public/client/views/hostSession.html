@@ -9,15 +9,23 @@
     var socket = io();
     $('form').submit(function(){
       socket.emit('questionForStudent', $('#m').val());
-      $('#m').val('');
+      $('#m').socket.on('questionForStudent', function(msg){
+      $('#messages').text("");
+      $('#messages').append($('<li class="qMessage">').text("Q:  " + msg.question)).append('<p>');
+      var ansLetters = ['A','B','C','D','E'];
+      for(var i=0; i<ansLetters.length;i++) {
+        $('#messages').append($('<div class="aMessage">').text(ansLetters[i] + ":  " + msg[ansLetters[i]]));
+      }
+      $('#messages').append('<p>');
+      $('#ratingSection').css({display: 'none'});
+      $('#answerSection').css({display: 'block'});
+    val('');
       return false;
     });
-    socket.on('questionForStudent', function(msg){
-      $('#messages').append($('<li>').text(msg));
+
     });
-    socket.on('studentAnswer', function(msg){
-      $('#messages').append($('<li>').text('hahah'));
-    });
+
+
   });
   </script>
 
@@ -45,13 +53,8 @@
 
 
 
-<!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
-
-
-
   <!-- Link to end session. Sends post data back to our server and redirects host to hostMenu-->
+  <a ui-sref=".results" id="showTestResults">Test Show Results</a>
 
   <a href="#/hostMenu" id="endSession" ng-click="endSession(); hidePage()">End Session</a>
-
-  <a ui-sref=".results">Test Show Results</a>
 </div>

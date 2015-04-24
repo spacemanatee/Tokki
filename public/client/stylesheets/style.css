@@ -163,6 +163,22 @@ tr:hover td {
   color: #C94040;
 }
 
+#showTestResults {
+  width: 300px;
+  height: 60px;
+  font-family: "Armata", sans-serif;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #c9d5cf;
+  border: 2px solid #355065;
+  margin-top: 10px;
+  color: #355065;
+  padding: 5px 5px;
+  text-decoration: none;
+}
+
 #endSession {
   width: 300px;
   height: 60px;
@@ -265,9 +281,25 @@ tr:hover td {
   color: #355065;
 } 
 
-#messages
+.qMessage {
+  list-style-type: none;
+  font-family: "Courier New", serif;
+  font-size: 20px;
+  text-align: left;
+  width:100%;
+  font-weight: bold;
+  color: #d42b43;
+}
+
+.aMessage
 {
-    list-style-type: none;
+  list-style-type: none;
+  font-family: "Courier New", serif;
+  font-size: 20px;
+  text-align: left;
+  width:100%;
+  color: #1a682c;
+  font-weight: bold;
 }
 
 
