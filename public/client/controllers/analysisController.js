@@ -34,11 +34,11 @@ angular.module('tokki')
     AnalysisServices.deleteSession(session, function() {
       $scope.sessionHistory();
     });
-  }
+  };
 
   $scope.hidePage = function(){
     $scope.show = false;
-  }
+  };
 
   $scope.show = true;
   $scope.sessionHistory();

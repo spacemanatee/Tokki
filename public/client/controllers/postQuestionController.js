@@ -15,7 +15,7 @@ angular.module('tokki')
       'D': $scope.answerD || '',
       'E': $scope.answerE || '',
       'correctAnswer': $scope.correctAnswer || ''
-    }
+    };
 
     HostServices.postQuestion(questionObj);
 
@@ -33,15 +33,15 @@ angular.module('tokki')
   $scope.getQuestions = function(){
     HostServices.getQuestions(function(allQuestions){
       for(var key in allQuestions){
-        $scope.questions.push(allQuestions[key])
+        $scope.questions.push(allQuestions[key]);
       }
       console.log($scope.questions);
-    })
-  }
+    });
+  };
 
   $scope.hidePage = function(){
     $scope.show = false;
-  }
+  };
 
   $scope.questions = [];
   $scope.getQuestions();

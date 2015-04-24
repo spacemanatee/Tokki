@@ -21,7 +21,7 @@ angular.module('tokki')
 
   $scope.hidePage = function(){
     $scope.show = false;
-  }
+  };
 
   $scope.show = true;
 }]);

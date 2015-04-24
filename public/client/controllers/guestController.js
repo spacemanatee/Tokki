@@ -60,7 +60,7 @@ angular.module('tokki')
     for(var i=0; i < $scope.answers.length; i++){
       $scope.answers[i].selected = null;
     }
-    
+
       console.log('answer value,',newAnswer.value );
       GuestServices.submitAnswer([$scope.index,newAnswer.value]);
       $scope.currAnswer= newAnswer.value;
@@ -69,7 +69,7 @@ angular.module('tokki')
 
   $scope.hidePage = function(){
     $scope.show = false;
-  }
+  };
 
   $scope.show = true;
 
