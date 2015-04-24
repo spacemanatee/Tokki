@@ -16,7 +16,7 @@ exports.init = function(sessionId, done) {
   getQuestions(function(results){
     for (var key in results) {
       questions.push(results[key]);
-    } 
+    }
   });
   var sessionGuestIo = io.of(sessionId);
   sessionGuestIo.on('connect', function(socket) {
@@ -61,7 +61,7 @@ exports.init = function(sessionId, done) {
 
 
 var sumUpResponse = function(answers) {
-    var sum =0; 
+    var sum =0;
     for (var key in answers) {
       if (key !== 'correctPercent') {
         sum+= parseInt(answers[key]);
@@ -70,7 +70,7 @@ var sumUpResponse = function(answers) {
     }
     console.log(sum);
     return sum;
-}
+};
 
 function calculateStudentsStats(msg, questions, stats) {
   var index=msg[0];

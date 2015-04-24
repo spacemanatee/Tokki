@@ -53,8 +53,7 @@ angular.module('tokki')
   // emit the question
   var emitQuestion = function(prompt) {
     session.socket.emit('questionForStudent', prompt);
-
-  }
+  };
 
   // Emit end to end a session
   var endSession = function() {
@@ -90,13 +89,13 @@ angular.module('tokki')
       }
       console.log("questions obj: ", questions);
     });
-  }
+  };
 
   var listenForAnswer = function (cb) {
     session.socket.on('studentAnswer', function(answer){
       cb(answer);
     });
-  }
+  };
 
   return {
     startSession: startSession,

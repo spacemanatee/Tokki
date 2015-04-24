@@ -73,45 +73,35 @@ angular.module('tokki')
 
     prompt.clicked = true;
 
-    
+
     socket.on('studentAnswer', function(answer){
       console.log("listening to student's response");
       //cb(answer, prompt);
       console.log("HostController:  studentAnswer recieved - ", $scope.answer[prompt.index]);
-    }); 
-
+    });
 
     //listenForAnswer($scope.checkUserAnswers, prompt);
-    
-  }
-
-  
-  
-
+  };
 
   $scope.checkUserAnswers = function(answer, prompt) {
     $scope.answers[prompt.index].answer +=1;
     checkAvg(prompt);
 
-  }
+  };
+
   var checkAvg= function (prompt) {
     prompt.average= $scope.answers[prompt.index][prompt.correctAnswer]/ sumUpResponse($scope.answers[prompt.index]) *100;
-  }
+  };
 
   var sumUpRespose = function(answers) {
-    var sum =0; 
+    var sum =0;
     for (var key in answers) {
       sum+= answers[key];
     }
     return sum;
-  }
+  };
 
-  // 5 mins or 20 ppl , push the curret result to the collection, reset the object counter, 
-
-
-
-
-
+  // 5 mins or 20 ppl , push the curret result to the collection, reset the object counter,
   $scope.show = true;
   $scope.startSession();
 

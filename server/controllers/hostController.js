@@ -39,7 +39,7 @@ exports.registerSession = function(req, res) {
           for (var key in questions) {
             data.questions.push(questions[key]);
           }
-          console.log('line before response!')
+          console.log('line before response!');
           res.send(data);
           // attempting to send back old response object
           // new to create new response
