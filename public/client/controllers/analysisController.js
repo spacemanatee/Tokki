@@ -31,7 +31,9 @@ angular.module('tokki')
 
   $scope.deleteSession = function(session){
     console.log('delete button pressed');
-    AnalysisServices.deleteSession(session);
+    AnalysisServices.deleteSession(session, function() {
+      $scope.sessionHistory();
+    });
   }
 
   $scope.hidePage = function(){

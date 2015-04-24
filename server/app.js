@@ -42,8 +42,9 @@ require('./auth/passport')(passport);
 
 app.use('/deletesession', function(req, res) {
   console.log("APP.JS deletesession: ", req.path);
-  // res.send("res");
-  hostController.deleteSession(req, res, req.path);
+  hostController.deleteSession(req, res, req.path, function() {
+    res.send("res");
+  });
 });
 
 /* GET home page. */

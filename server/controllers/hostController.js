@@ -61,11 +61,14 @@ exports.retrieveSessions = function(req, res) {
   });
 };
 
-exports.deleteSession = function(req, res, session) {
+exports.deleteSession = function(req, res, session, cb) {
   console.log("DELETING SESSION (CONTROLLER)");
   var hostInfo = req.session.passport.user;
   var sessionID = session.slice(1);
-  dbUtils.deleteSessionFromDb(hostInfo, sessionID);
+  dbUtils.deleteSessionFromDb(hostInfo, sessionID, function () {
+    console.log("CALLED called in hostController");
+    cb();
+  });
 };
 
 // Returns an object with properties: {
