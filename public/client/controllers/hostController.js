@@ -6,6 +6,7 @@ angular.module('tokki')
   $scope.hisAvg = 0;
   $scope.userCount = 0;
   $scope.time = '00 : 00 : 00';
+  var socket = io();
   var startTime = 0;
   var gotTime = false;
   var setTime = function(){
@@ -61,11 +62,14 @@ angular.module('tokki')
 
 
   $scope.submitQuestion = function(prompt) {
-    
+    console.log(prompt.question);
+    socket.emit('questionForStudent', prompt.question);
+    /*
     console.log(prompt.index);
     HostServices.emitQuestion(prompt); // emit a question event with the prompt object data
     prompt.clicked = true;
     HostServices.listenForAnswer($scope.checkUserAnswers);
+    */
     
   }
 
@@ -73,7 +77,7 @@ angular.module('tokki')
 
 
   $scope.checkUserAnswers = function(answer) {
-    $scope.answers.answer +=1;
+    $scope.answers[0].answer +=1;
     checkAvg(prompt);
 
   }

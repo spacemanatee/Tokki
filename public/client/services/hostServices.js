@@ -46,7 +46,7 @@ angular.module('tokki')
   };
   // emit the question
   var emitQuestion = function(prompt) {
-    session.socket.emit('question', prompt);
+    session.socket.emit('questionForStudent', prompt);
 
   }
 
@@ -77,7 +77,7 @@ angular.module('tokki')
   }
 
   var listenForAnswer = function (cb) {
-    session.socket.on('answer', function(answer){
+    session.socket.on('studentAnswer', function(answer){
       cb(answer);
     });
   }

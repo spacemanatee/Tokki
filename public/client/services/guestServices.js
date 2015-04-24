@@ -34,6 +34,7 @@ angular.module('tokki')
     session.socket.on('error', function(err) {
       console.error(err);
     });
+    
   };
 
   // Sends vote
@@ -44,9 +45,18 @@ angular.module('tokki')
     }
   };
 
+
+  var submitAnswer = function(answerData) {
+    if(session.socket){
+      console.log('answer:' + answerData);
+      session.socket.emit('studentAnswer', answerData);
+    }
+  };
+
   return {
     getSession: getSession,
     listen: listen,
+    submitAnswer:submitAnswer,
     vote: vote
   };
 

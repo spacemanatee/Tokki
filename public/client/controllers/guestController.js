@@ -10,8 +10,16 @@ angular.module('tokki')
   {value: 2, selected: null},
   {value: 1, selected: null}];
 
+  $scope.answers = [
+  {value: 'A', selected: null},
+  {value: 'B', selected: null},
+  {value: 'C', selected: null},
+  {value: 'D', selected: null},
+  {value: 'E', selected: null}];
+
   // Current Vote value
   $scope.currRating = null;
+  $scope.currAnswer = null;
 
   // Opens Session
   $scope.init = function(sessionId) {
@@ -38,6 +46,21 @@ angular.module('tokki')
       GuestServices.vote(newRating.value);
       $scope.currRating = newRating.value;
       newRating.selected = 'selected';
+    }
+  };
+
+
+  $scope.submitAnswer = function(newAnswer) {
+    for(var i=0; i < $scope.answers.length; i++){
+      $scope.answers[i].selected = null;
+    }
+    if($scope.currAnswer === newAnswer.value){
+      GuestServices.submitAnswer(null);
+      $scope.currAnswer = null;
+    }else{
+      GuestServices.submitAnswer(newAnswer.value);
+      $scope.currAnswer= newAnswer.value;
+      newAnswer.selected = 'selected';
     }
   };
 
