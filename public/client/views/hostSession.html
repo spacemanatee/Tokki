@@ -34,26 +34,28 @@
   </script>
 
 
-  <div id="sessionStats">
-    <div >Session ID: <span>{{ sessionId }}</span></div>
-    <!-- Number of Voters in Room -->
-    <div >Number of Voters: <span>{{ userCount }}</span></div>
-    <!-- Time -->
-    <div >Time: <span>{{ time }}</span></div>
-  </div>
+
+<div id="sessionStats" style="width: 250px; height=100px">
+<div >Session ID: <span>{{ sessionId }}</span></div>
+<!-- Number of Voters in Room -->
+<div >Number of Voters: <span>{{ userCount }}</span></div>
+<!-- Time -->
+<div >Time: <span>{{ time }}</span></div>
+</div>
 
 
-  <!-- Current Average Feeling -->
-  <div id="historyStats">
-    <div >Current Average: <span>{{ currAvg }}</span></div>
-    <!-- Overall Average Feeling -->
-    <div >Historical Average: <span>{{ hisAvg }}</span></div>
-  </div>
+<!-- Current Average Feeling -->
+<div id="historyStats" style="border-color: red">
+<div >Current Average: <span>{{ currAvg }}</span></div>
+<!-- Overall Average Feeling -->
+<div >Historical Average: <span>{{ hisAvg }}</span></div>
+</div>
 
 
-  <div id="question-header" ng-repeat="prompt in questionLists track by $index" ng-model="questionLists">
-      <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">#{{$index+1}}. {{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked">{{prompt.average}} %</div>
-  </div>
+<div id="question-header" ng-repeat="prompt in questionLists track by $index" ng-model="questionLists" style="border-color: red; border-width:5px" width="100px" >
+    <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">#{{$index+1}}. {{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked"> % of Students with correct response: {{studentStats[prompt.index].correctPercent}} %</div>
+</div>
+
 
 
 
