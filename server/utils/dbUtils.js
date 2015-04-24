@@ -113,6 +113,7 @@ exports.getQuestions = function(cb) {
 exports.deleteSessionFromDb = function(userInfo, sessionId) {
   console.log(" deleteSession USERINFO: ", userInfo);
   console.log(" deleteSession SESSIONId: ", sessionId);
+  return dBRef.child(userInfo.provider).child(userInfo.hostId).child('sessions').child(sessionId).set(null);
 };
 
 /*

@@ -8,7 +8,7 @@ module.exports = function(app, passport) {
   // app.post('/newTrial', hostController.registerSession);
   // app.get('/old/:sessionId', isLoggedIn, hostController.retrieveSession);
   app.get('/old', isLoggedIn, hostController.retrieveSessions);
-  app.post('/deletesession', isLoggedIn, hostController.deleteSession);
+  // app.delete('/deletesession', isLoggedIn, hostController.deleteSession);
   app.get('/:sessionId', hostController.redirect);
   app.get('/', hostController.redirect);
 };
