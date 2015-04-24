@@ -13,6 +13,10 @@ exports.init = function(sessionId, done) {
     socket.on('vote', function(voteVal) {
       sessions.changeVote(sessionId, socket.id, voteVal);
     });
+    socket.on('studentAnswer', function(msg){
+      console.log('student Answer Received!!!', msg);
+      socket.emit('studentAnswer', msg);
+    });
     socket.on('disconnect', function() {
       sessions.changeVote(sessionId, socket.id, null);
     });
@@ -21,12 +25,17 @@ exports.init = function(sessionId, done) {
   // TODO: Add auth for this room
   var sessionHostIo = io.of('host/'+sessionId);
   sessionHostIo.on('connect', function(socket) {
+    socket.on('studentAnswer', function(msg){
+      console.log('student Answer Received!!!', msg);
+      socket.emit('studentAnswer', msg);
+    });
     socket.emit('upTime', Date.now() - sessions.get(sessionId).get('startTime'));
 
     // Calls calculateStats every interval with the proper sessionId
     var intervalObject = setInterval(function() {
       hostController.calculateStats(sessionId, function(data) {
         sessionHostIo.emit('stats', data);
+        sessionHostIo.emit('test', 'haha');
       });
     }, sessions.get(sessionId).get('interval'));
 

@@ -102,6 +102,9 @@ function onListening() {
     console.log('server.js:  studentAnswer(!!!): ' + msg);
     io.emit('studentAnswer', msg);
   });
+  socket.on('vote', function(msg){
+    console.log('vote');
+  });
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });

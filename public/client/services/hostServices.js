@@ -38,6 +38,12 @@ angular.module('tokki')
       session.socket.on('stats', function(data) {
         cb(data);
       });
+      session.socket.on('test1', function(msg) {
+        console.log('received test mesage ' ,msg);
+      });
+      session.socket.on('studentAnswer', function(msg){
+        console.log('haha ', msg);
+      });
     });
 
     session.socket.on('error', function(err) {
