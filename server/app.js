@@ -39,6 +39,11 @@ app.use(flash());
 
 require('./auth/passport')(passport);
 
+app.delete('/deletesession', function(req, res) {
+  console.log("APP.JS deletesession");
+  res.send("res");
+});
+
 /* GET home page. */
 app.get('/', function(req, res, next) {
   res.sendFile('/index.html');
