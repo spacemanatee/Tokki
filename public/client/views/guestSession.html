@@ -1,7 +1,6 @@
 <!-- The view where guests vote -->
 <div ng-show="show">
 <!-- This display the question/ prompt -->
-<div>{{question}}</div>
 
 
 <!-- Socket.io Messages -->
@@ -20,12 +19,24 @@ $( document ).ready(function() {
     return false;
   });
   socket.on('questionForStudent', function(msg){
+    console.log('hahaha');
     $('#messages').append($('<li>').text(msg));
+    $('#ratingSection').css({display: 'none'});
+    $('#answerSection').css({display: 'block'});
   });
 });
 </script>
 
 
 <!-- The text in ng-repeat is placeholder text until we get it connected to the controller properly -->
+<div id="ratingSection">
 <div class="ratings" ng-repeat="rating in ratings" ng-class="rating.selected" ng-click="vote(rating)"><h3 id="ratingText">{{rating.value}}</h3></div>
 </div>
+
+
+<!-- the multiple choice -->
+<div id="answerSection" style='display:none;'>
+<div class="ratings" ng-repeat="answer in answers" ng-class="answer.selected" ng-click="submitAnswer(answer)"><h3 id="ratingText">{{answer.value}}</h3></div>
+</div>
+
+
