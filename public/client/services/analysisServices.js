@@ -47,7 +47,7 @@ angular.module('tokki')
       data: sessionId
     })
     .then(function(resp) {
-      console.log('message sent: ', question);
+      console.log(resp);
     });
   };
 

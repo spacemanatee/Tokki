@@ -19,7 +19,7 @@
     </tr>
     <!-- Additional sessions appended-->
     <!--<tr><td colspan="5" ></td></tr> -->
-    <tr ng-repeat="session in sessions | orderBy: session.startTime">
+    <tr class="fx-fade-down fx-speed-1200" ng-repeat="session in sessions | orderBy: session.startTime">
       <td><a href="#/api/"+session.id ng-click="hidePage()">{{session.sessionId}} </td>
       <td><mydate>{{ session.startTime | date:'yyyy-MM-dd HH:mm'}}</mydate></td>
       <!--Duration is in milliseconds (ms)

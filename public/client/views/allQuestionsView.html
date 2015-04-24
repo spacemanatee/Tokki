@@ -1,16 +1,18 @@
 <div ng-show="show">
-<div class="question-header">Questions</div>
+  <div class="question-header">Questions</div>
 
-<ul id="allQuestions">
-  <li ng-repeat="question in questions">
-    <ul>
-      <li>{{question.question}}</li>
-      <li>{{question.A}}</li>
-      <li>{{question.B}}</li>
-      <li>{{question.C}}</li>
-      <li>{{question.D}}</li>
-      <li>{{question.E}}</li>
-    </ul>
-  </li>
-</ul>
+  <div class="question-list-container">
+  <ul id="allQuestions">
+    <li class="question-li" ng-repeat="question in questions">{{question.question}}
+      <ul id="all-answers">
+        <li class="answer-li"><span ng-class="{correct: question.correctAnswer==='A'}">{{question.A}}</span></li>
+        <li class="answer-li"><span ng-class="{correct: question.correctAnswer==='B'}">{{question.B}}</span></li>
+        <li class="answer-li"><span ng-class="{correct: question.correctAnswer==='C'}">{{question.C}}</span></li>
+        <li class="answer-li"><span ng-class="{correct: question.correctAnswer==='D'}">{{question.D}}</span></li>
+        <li class="answer-li"><span ng-class="{correct: question.correctAnswer==='E'}">{{question.E}}</span></li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+</div>
 

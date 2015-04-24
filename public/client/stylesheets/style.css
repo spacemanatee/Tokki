@@ -181,6 +181,34 @@ tr:hover td {
 /********************************/
 /*POST QUESTION VIEW STYLES*/
 /********************************/
+#all-answers {
+  list-style-type: upper-alpha;
+}
+
+.question-li {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.answer-li {
+  text-align: left;
+  font-size: 18pt;
+}
+
+.question-list-container {
+  width: 65%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.correct {
+  background-color: #98FB98;
+  border-radius: 7px;
+}
+
+/********************************/
+/*POST QUESTION VIEW STYLES*/
+/********************************/
 #question-header {
   font-family: "Armata", sans-serif;
   font-size: 24px;
