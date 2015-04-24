@@ -142,23 +142,30 @@ exports.getSessionsFromDb = function(userInfo, cb) {
     return cb('getSessionsFromDb failed: userInfo params not specified');
   }
 
-  var sessions = [];
-  sessionsRef(userInfo).once('value', function(snapshot) {
-      gatherChildren(sessionsRef(userInfo), Object.keys(snapshot.val()).length, function(results, snapshot) {
-        var session = snapshot.val();
-        results.unshift({
-          sessionId: snapshot.key(),
-          startTime: session.startTime,
+  // var sessions = [];
 
-          // These values are undefined if the session is not yet closed
-          duration: session.endTime ? session.endTime - session.startTime : undefined,
-          weightedAverage: session.weightedAverage,
-          userCount: session.userCount
-        });
-      }, cb);
+  sessionsRef(userInfo).once('value', function(snapshot) {
+      console.log("SNAPSHOT.VAL()", snapshot.val());
+      if (snapshot.val()) {
+        gatherChildren(sessionsRef(userInfo), Object.keys(snapshot.val()).length, function(results, snapshot) {
+          var session = snapshot.val();
+          results.unshift({
+            sessionId: snapshot.key(),
+            startTime: session.startTime,
+
+            // These values are undefined if the session is not yet closed
+            duration: session.endTime ? session.endTime - session.startTime : undefined,
+            weightedAverage: session.weightedAverage,
+            userCount: session.userCount
+          });
+        }, cb);
+      } else {
+        cb(null, {});
+      }
     }, function (errorObject) {
       return cb('Reading from db failed: ' + errorObject.code);
   });
+
 };
 
 // Intended for post-session data analysis by host
