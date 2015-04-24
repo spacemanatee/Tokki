@@ -62,16 +62,16 @@ angular.module('tokki')
 
 
   $scope.submitQuestion = function(prompt) {
-    console.log(prompt.question);
-    socket.emit('questionForStudent', prompt.question);
+    console.log("PROMPT QUESTION: ", prompt.question);
+    socket.emit('questionForStudent', prompt);
 
     prompt.clicked = true;
 
 
     socket.on('studentAnswer', function(answer){
       console.log("listening to student's response");
-       //cb(answer, prompt);
-       console.log($scope.answer[prompt.index]);
+      //cb(answer, prompt);
+      console.log("HostController:  studentAnswer recieved - ", $scope.answer[prompt.index]);
     }); 
 
     //listenForAnswer($scope.checkUserAnswers, prompt);
