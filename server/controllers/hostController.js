@@ -61,10 +61,11 @@ exports.retrieveSessions = function(req, res) {
   });
 };
 
-exports.deleteSession = function(req, res) {
-  console.log("DELETEING SESSION (CONTROLLER)")
+exports.deleteSession = function(req, res, session) {
+  console.log("DELETING SESSION (CONTROLLER)");
   var hostInfo = req.session.passport.user;
-  dbUtils.deleteSessionFromDb(hostInfo, res.body);
+  var sessionID = session.slice(1);
+  dbUtils.deleteSessionFromDb(hostInfo, sessionID);
 };
 
 // Returns an object with properties: {
