@@ -31,7 +31,7 @@ angular.module('tokki')
         $scope.questionLists[i].average=0;
         $scope.questionLists[i].clicked=false;
         $scope.questionLists[i].index=i;
-        $scope.answers[i]={A:0, B:0, C: 0, D:0, E:0};
+        $scope.questionLists[i].answers={A:0, B:0, C: 0, D:0, E:0};
       }
 
       HostServices.listen( function(sessionData) {
@@ -64,25 +64,30 @@ angular.module('tokki')
   $scope.submitQuestion = function(prompt) {
     console.log(prompt.question);
     socket.emit('questionForStudent', prompt.question);
-    /*
-    console.log(prompt.index);
-    HostServices.emitQuestion(prompt); // emit a question event with the prompt object data
+
     prompt.clicked = true;
-    HostServices.listenForAnswer($scope.checkUserAnswers);
-    */
+
+
+    socket.on('studentAnswer', function(answer){
+      console.log("listening to student's response");
+       //cb(answer, prompt);
+       console.log($scope.answer[prompt.index]);
+    }); 
+
+    //listenForAnswer($scope.checkUserAnswers, prompt);
     
   }
 
   
 
 
-  $scope.checkUserAnswers = function(answer) {
-    $scope.answers[0].answer +=1;
+  $scope.checkUserAnswers = function(answer, prompt) {
+    $scope.answers[prompt.index].answer +=1;
     checkAvg(prompt);
 
   }
   var checkAvg= function (prompt) {
-    prompt.average= $scope.answers[prompt.index][prompt.answer]/ sumUpResponse($scope.answers[prompt.index]) *100;
+    prompt.average= $scope.answers[prompt.index][prompt.correctAnswer]/ sumUpResponse($scope.answers[prompt.index]) *100;
   }
 
   var sumUpRespose = function(answers) {

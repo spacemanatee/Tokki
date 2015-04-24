@@ -54,14 +54,11 @@ angular.module('tokki')
     for(var i=0; i < $scope.answers.length; i++){
       $scope.answers[i].selected = null;
     }
-    if($scope.currAnswer === newAnswer.value){
-      GuestServices.submitAnswer(null);
-      $scope.currAnswer = null;
-    }else{
+    
+      console.log('answer value,',newAnswer.value );
       GuestServices.submitAnswer(newAnswer.value);
       $scope.currAnswer= newAnswer.value;
       newAnswer.selected = 'selected';
-    }
   };
 
   $scope.hidePage = function(){

@@ -3,9 +3,6 @@
 
   <!-- Socket.io Messages -->
   <ul id="messages"></ul>
-  <form action="">
-    <input id="m" autocomplete="off" /><button>Send out Question</button>
-  </form>
   <script>
   $( document ).ready(function() {
     console.log( "ready!?!" );
@@ -17,6 +14,9 @@
     });
     socket.on('questionForStudent', function(msg){
       $('#messages').append($('<li>').text(msg));
+    });
+    socket.on('studentAnswer', function(msg){
+      $('#messages').append($('<li>').text('hahah'));
     });
   });
   </script>
@@ -40,7 +40,7 @@
 
 
 <div id="question-header" ng-repeat="prompt in questionLists track by $index" ng-model="questionLists">
-    <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">#{{$index}}.   {{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked">{{prompt.average}} %</div>
+    <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">#{{$index+1}}. {{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked">{{prompt.average}} %</div>
 </div>
 
 
