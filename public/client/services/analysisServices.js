@@ -36,18 +36,18 @@ angular.module('tokki')
     .then(function(resp){
       console.log("SessionAnalysis called");
       session.data = resp.data;
-      cb(resp.data);
+      // cb(resp.data);
     });
   };
 
   var deleteSession = function(sessionId){
     return $http({
-      method: 'POST',
+      method: 'DELETE',
       url: '/deletesession',
       data: sessionId
     })
     .then(function(resp) {
-      console.log('message sent: ', question);
+      console.log('message sent: ', resp);
     });
   };
 
