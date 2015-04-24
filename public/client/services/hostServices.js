@@ -26,7 +26,7 @@ angular.module('tokki')
 
   // Initiates socket connection
   // Listens for socket events
-  var listen = function(cb) {
+  var listen = function(cb, cb2) {
     session.socket = io.connect(window.location.host + '/host/' + session.id);
 
     session.socket.on('connect', function() {
@@ -41,8 +41,8 @@ angular.module('tokki')
       session.socket.on('test1', function(msg) {
         console.log('received test mesage ' ,msg);
       });
-      session.socket.on('studentAnswer', function(msg){
-        console.log('haha ', msg);
+      session.socket.on('studentStats', function(studentStats){
+        cb2(studentStats);
       });
     });
 

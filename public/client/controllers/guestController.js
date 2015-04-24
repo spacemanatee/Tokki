@@ -20,12 +20,18 @@ angular.module('tokki')
   // Current Vote value
   $scope.currRating = null;
   $scope.currAnswer = null;
+  var socket = io();
 
   // Opens Session
   $scope.init = function(sessionId) {
     GuestServices.getSession( sessionId, function(sessionId, data) {
       console.log('listening to session: ' + $location.path().split('/')[2]);
       // Runs on session end
+
+      socket.on('questionForStudent', function(msg){
+        console.log('question posted!!', msg);
+        $scope.index=msg.index;
+      });
       GuestServices.listen( function() {
         console.log('session has ended');
         $state.go('home', {}, {reload: true});
@@ -56,7 +62,7 @@ angular.module('tokki')
     }
     
       console.log('answer value,',newAnswer.value );
-      GuestServices.submitAnswer(newAnswer.value);
+      GuestServices.submitAnswer([$scope.index,newAnswer.value]);
       $scope.currAnswer= newAnswer.value;
       newAnswer.selected = 'selected';
   };

@@ -10,8 +10,10 @@ $( document ).ready(function() {
   console.log( "ready!?!" );
 
   var socket = io();
+ 
   $('form').submit(function(){
     socket.emit('studentAnswer', $('#m').val());
+    console.log('logging the student Answer, ', $('#m').val());
     $('#m').val('');
     return false;
   });
@@ -26,7 +28,6 @@ $( document ).ready(function() {
     $('#messages').append('<p>');
     $('#ratingSection').css({display: 'none'});
     $('#answerSection').css({display: 'block'});
-  });
   $('#answerSection').on('click', function(){
     $('#answerSection').css({display: 'none'});
     $('#ratingSection').css({display: 'block'});
