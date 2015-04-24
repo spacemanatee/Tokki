@@ -11,6 +11,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var config = require('./auth/config');
 var dbUtils = require('./utils/dbUtils');
+var hostController = require('./controllers/hostController');
 
 var app = express();
 
@@ -39,9 +40,10 @@ app.use(flash());
 
 require('./auth/passport')(passport);
 
-app.delete('/deletesession', function(req, res) {
-  console.log("APP.JS deletesession");
-  res.send("res");
+app.use('/deletesession', function(req, res) {
+  console.log("APP.JS deletesession: ", req.path);
+  // res.send("res");
+  hostController.deleteSession(req, res, req.path);
 });
 
 /* GET home page. */
@@ -57,7 +59,7 @@ app.post('/question', function(req, res, next) {
 
   dbUtils.getQuestions(function(results) {
     console.log('RESULTS POST QUESTION: ', results);
-    return res.send(results);
+    res.send(results);
   });
 
 });
@@ -66,7 +68,7 @@ app.get('/question', function(req, res, next) {
 
   dbUtils.getQuestions(function(results) {
     console.log('RESULTS GET QUESTIONS: ', results);
-    return res.send(results);
+    res.send(results);
   });
 
 });
