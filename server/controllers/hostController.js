@@ -61,6 +61,12 @@ exports.retrieveSessions = function(req, res) {
   });
 };
 
+exports.deleteSession = function(req, res) {
+  console.log("DELETEING SESSION (CONTROLLER)")
+  var hostInfo = req.session.passport.user;
+  dbUtils.deleteSessionFromDb(hostInfo, res.body);
+};
+
 // Returns an object with properties: {
 // startTime: 1429426355540,
 // endTime: 1429426355326,

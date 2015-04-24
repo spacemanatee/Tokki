@@ -43,11 +43,11 @@ angular.module('tokki')
   var deleteSession = function(sessionId){
     return $http({
       method: 'POST',
-      url: '/deletesession',
+      url: '/host/deletesession',
       data: sessionId
     })
-    .then(function(resp) {
-      console.log('message sent: ', question);
+    .then(function(resp, err) {
+      console.log('message sent: ', err);
     });
   };
 

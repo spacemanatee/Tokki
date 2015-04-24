@@ -110,6 +110,11 @@ exports.getQuestions = function(cb) {
   });
 };
 
+exports.deleteSessionFromDb = function(userInfo, sessionId) {
+  console.log(" deleteSession USERINFO: ", userInfo);
+  console.log(" deleteSession SESSIONId: ", sessionId);
+};
+
 /*
 sessionInfo in sessionRef { provider: 'facebook',
   hostId: '10103112462162704',

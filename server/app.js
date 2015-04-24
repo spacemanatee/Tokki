@@ -66,6 +66,13 @@ app.get('/question', function(req, res, next) {
 
 });
 
+// app.post('/deletesession', function(req, res, next) {
+//   console.log("ID TO DELETE1: ", req.body);
+
+//   dbUtils.deleteSession(req.body);
+
+// });
+
 app.use('/guest', guestRouter);
 app.use('/host', hostRouter);
 
