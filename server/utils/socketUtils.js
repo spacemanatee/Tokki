@@ -48,6 +48,9 @@ exports.init = function(sessionId, done) {
     }, sessions.get(sessionId).get('interval'));
 
     socket.on('end', function() {
+      // clear out the stat record and question record
+      stats=[];
+      questions=[];
       sessionGuestIo.emit('end');
       socket.broadcast.emit('end');
       sessions.removeSession(sessionId);
