@@ -7,32 +7,26 @@
 <ul id="messages"></ul>
 <script>
 $( document ).ready(function() {
-  console.log( "ready!?!" );
-
   var socket = io();
  
-  $('form').submit(function(){
-    socket.emit('studentAnswer', $('#m').val());
-    console.log('logging the student Answer, ', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
-
   socket.on('questionForStudent', function(msg){
     $('#messages').text("");
     $('#messages').append($('<li class="qMessage">').text("Q:  " + msg.question)).append('<p>');
     var ansLetters = ['A','B','C','D','E'];
     for(var i=0; i<ansLetters.length;i++) {
-      $('#messages').append($('<div class="aMessage">').text(ansLetters[i] + ":  " + msg[ansLetters[i]]));
+      $('#messages').append($('<div class="aMessage">').text(ansLetters[i] + ":  " + msg[ansLetters[i]])).css({opacity: "0.0"}).animate({opacity: "1.0"}, 1000 * i);
     }
     $('#messages').append('<p>');
-    $('#ratingSection').css({display: 'none'});
-    $('#answerSection').css({display: 'block'});
-  $('#answerSection').on('click', function(){
-    $('#answerSection').css({display: 'none'});
-    $('#ratingSection').css({display: 'block'});
-    $('#messages').text('');
-  });
+    $('html, body').animate({ scrollTop: 0 }, 0);
+
+    $('#ratingSection').css({display: 'none'}).css({opacity: "1.0"}).animate({opacity: "0.0"}, 2000).css({display: 'none'});
+    $('#answerSection').css({display: 'block'}).css({opacity: "0.0"}).animate({opacity: "1.0"}, 2000).css({display: 'block'});
+    $('#answerSection').on('click', function(){
+      $('#answerSection').css({opacity: "1.0"}).animate({opacity: "0.0"}, 2000).css({display: 'none'});
+      $('#ratingSection').css({opacity: "0.0"}).animate({opacity: "1.0"}, 2000).css({display: 'block'});
+      $('#messages').text('');
+      $('html, body').animate({ scrollTop: 0 }, 0);
+    });
 });
 
 });
@@ -41,13 +35,15 @@ $( document ).ready(function() {
 
 <!-- The text in ng-repeat is placeholder text until we get it connected to the controller properly -->
 <div id="ratingSection">
-<div class="ratings" ng-repeat="rating in ratings" ng-class="rating.selected" ng-click="vote(rating)"><h3 id="ratingText">{{rating.value}}</h3></div>
+  <h4>Select your current Lecture&nbsp;Comprehension:</h4>
+  <div class="ratings" ng-repeat="rating in ratings" ng-class="rating.selected" ng-click="vote(rating)"><h3 id="ratingText">{{rating.value}}</h3></div>
 </div>
 
 
 <!-- the multiple choice -->
 <div id="answerSection" style='display:none;'>
-<div class="ratings" ng-repeat="answer in answers" ng-class="answer.selected" ng-click="submitAnswer(answer)"><h3 id="ratingText">{{answer.value}}</h3></div>
+  <h4>Select your Answer&nbsp;below:</h4>
+  <div class="ratings" ng-repeat="answer in answers" ng-class="answer.selected" ng-click="submitAnswer(answer)"><h3 id="ratingText">{{answer.value}}</h3></div>
 </div>
 
 
