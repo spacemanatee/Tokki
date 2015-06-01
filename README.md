@@ -56,7 +56,7 @@ Angular, Node/Express, Socket.io, Backbone, Firebase
     node server.js
     ```
 
-1. Open http://localhost:3000 in your browser.
+1. Open http://localhost.xip.io:3000 in your browser.
 
 1. If you are on the live site, and want to try to log in as admin, please
 contact us.
