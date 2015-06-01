@@ -12,21 +12,22 @@ takes this app to the next level by allowing presenter to generate questions, ca
 
 ## Features
 
-- Socket.io session to cast live vote or answer live quizzes
-- analyze the class performance live
+- Socket.io session to cast live votes or live quizzes
+- analyze the class performance on demand
 - Allows professor/presenter to generate questions
-- Added Animation to allow better user experience
+- Added animation to allow better user experience
 
 ## Tech Stack
 
-Angular, Node/Express, Socket.io, Backbone, FireBase
+Angular, Node/Express, Socket.io, Backbone, Firebase
 
 ## Developer Environment
 
 1. Register for Facebook Application and obtain key:
-   ```sh
-   # Create a new file server/auth/config.js, reference server/auth/config.example.js,
+   Create a new file server/auth/config.js, reference server/auth/config.example.js,
    Fill in your key as below:
+   
+   ```sh
    facebookAuth : {
     prod: {
       clientID : 'your-secret-clientID-here', // Your App ID
@@ -42,8 +43,6 @@ Angular, Node/Express, Socket.io, Backbone, FireBase
    ```
 
 1. Run the following in the project directory:
-
-    #Steps to install:
 
     ```sh
     # install the grunt-cli
