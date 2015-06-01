@@ -65,17 +65,17 @@ contact us.
 
 Login Page:
 ![Image of Login]
-(http://gdurl.com/DLpE)
+(http://gdurl.com/TPAd)
 
 
 Presenter/Teacher Page:
 ![Image of Presenter/Teacher Page]
-(http://gdurl.com/beo4)
+(http://gdurl.com/DLpE)
 
 
 Audience/Student Page:
 ![Image of Audience/Student Page]
-(http://gdurl.com/TPAd)
+(http://gdurl.com/beo4)
 
 
 
