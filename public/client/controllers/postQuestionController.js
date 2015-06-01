@@ -35,7 +35,6 @@ angular.module('tokki')
       for(var key in allQuestions){
         $scope.questions.push(allQuestions[key]);
       }
-      console.log($scope.questions);
     });
   };
 

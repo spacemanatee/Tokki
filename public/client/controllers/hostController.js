@@ -21,11 +21,8 @@ angular.module('tokki')
   $scope.startSession = function() {
 
     HostServices.startSession( function(data) {
-      console.log('now listening for votes on session: ' + data.session);
-      console.log("response.data in controller: ", data);
       $scope.sessionId = data.session;
       $scope.questionLists=data.questions;
-      console.log($scope.questionLists);
       $scope.answers={};
       for (var i =0; i <$scope.questionLists.length; i++) {
         $scope.questionLists[i].average=0;
@@ -35,7 +32,6 @@ angular.module('tokki')
       }
 
       HostServices.listen( function(sessionData) {
-        console.log(sessionData);
         $scope.userCount = sessionData.userCount || 0;
         $scope.currAvg = (sessionData.currentAverage || 0).toFixed(2);
         $scope.hisAvg = (sessionData.historicalAverage || 0).toFixed(2);
@@ -47,7 +43,6 @@ angular.module('tokki')
         $scope.$apply();
       }, function(studentStats) {
         $scope.studentStats=studentStats;
-        console.log($scope.studentStats);
       });
 
     });
@@ -55,7 +50,6 @@ angular.module('tokki')
 
   // Ends a session
   $scope.endSession = function() {
-    console.log("Session ended");
     HostServices.endSession();
   };
 
@@ -66,21 +60,10 @@ angular.module('tokki')
 
 
   $scope.submitQuestion = function(prompt) {
-    console.log("PROMPT QUESTION: ", prompt.question);
-
-    console.log(prompt.question);
     socket.emit('questionForStudent', prompt);
-
     prompt.clicked = true;
-
-
     socket.on('studentAnswer', function(answer){
-      console.log("listening to student's response");
-      //cb(answer, prompt);
-      console.log("HostController:  studentAnswer recieved - ", $scope.answer[prompt.index]);
     });
-
-    //listenForAnswer($scope.checkUserAnswers, prompt);
   };
 
   $scope.checkUserAnswers = function(answer, prompt) {

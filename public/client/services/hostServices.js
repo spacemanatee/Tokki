@@ -19,7 +19,6 @@ angular.module('tokki')
     })
     .then(function(resp) {
       session.id = resp.data.session; // resp.data.session
-      console.log("RESP.DATA from StartSession: ", resp.data);
       cb(resp.data);
     });
   };
@@ -39,7 +38,6 @@ angular.module('tokki')
         cb(data);
       });
       session.socket.on('test1', function(msg) {
-        console.log('received test mesage ' ,msg);
       });
       session.socket.on('studentStats', function(studentStats){
         cb2(studentStats);
@@ -87,7 +85,6 @@ angular.module('tokki')
       for (var key in resp.data) {
         questions.push(resp.data[key]);
       }
-      console.log("questions obj: ", questions);
     });
   };
 

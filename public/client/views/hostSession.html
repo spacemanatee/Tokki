@@ -5,7 +5,6 @@
   <ul id="messages"></ul>
   <script>
   $( document ).ready(function() {
-    console.log( "ready!?!" );
     var socket = io();
     $('form').submit(function(){
       socket.emit('questionForStudent', $('#m').val());

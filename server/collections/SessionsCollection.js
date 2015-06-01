@@ -9,9 +9,6 @@ exports.SessionsCollection = Backbone.Collection.extend({
 
   // Adds a new session and returns its unique identifier
   addNewSession: function(params) {
-    console.log("addNewSession called");
-    console.log(params);
-    console.log('');
     params = params || {};
     var session = new SessionModel(params);
     this.add(session);
