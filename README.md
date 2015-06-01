@@ -65,17 +65,17 @@ contact us.
 
 Login Page:
 ![Image of Login]
-(https://raw.githubusercontent.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/login.png?raw=true)
+(http://gdurl.com/DLpE)
 
 
 Presenter/Teacher Page:
 ![Image of Presenter/Teacher Page]
-(https://raw.githubusercontent.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/admin.png?raw=true)
+(http://gdurl.com/beo4)
 
 
 Audience/Student Page:
 ![Image of Audience/Student Page]
-(https://raw.githubusercontent.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/client.png?raw=true)
+(http://gdurl.com/TPAd)
 
 
 
