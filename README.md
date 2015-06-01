@@ -65,17 +65,17 @@ contact us.
 
 Login Page:
 ![Image of Login]
-(https://github.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/login.png?raw=true)
+(https://raw.githubusercontent.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/login.png?raw=true)
 
 
 Presenter/Teacher Page:
 ![Image of Presenter/Teacher Page]
-(https://github.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/admin.png?raw=true)
+(https://raw.githubusercontent.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/admin.png?raw=true)
 
 
 Audience/Student Page:
 ![Image of Audience/Student Page]
-(https://github.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/client.png?raw=true)
+(https://raw.githubusercontent.com/7seven7lst/Tokki/tree/doc/updateReadMe/public/client/images/client.png?raw=true)
 
 
 
