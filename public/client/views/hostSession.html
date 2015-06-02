@@ -32,31 +32,29 @@
   });
   </script>
 
+  <div style="width: 250px; height: 100px; font-size: 16px; float: left">
+    <div >Session ID: <span>{{ sessionId }}</span></div>
+    <!-- Number of Voters in Room -->
+    <div >Number of Voters: <span>{{ userCount }}</span></div>
+    <!-- Time -->
+    <div >Time: <span>{{ time }}</span></div>
+  </div>
 
-<div style="width: 250px; height=100px; font-size: 16px; float: left">
-<div >Session ID: <span>{{ sessionId }}</span></div>
-<!-- Number of Voters in Room -->
-<div >Number of Voters: <span>{{ userCount }}</span></div>
-<!-- Time -->
-<div >Time: <span>{{ time }}</span></div>
-</div>
+  <!-- Current Average Level of Understanding -->
+  <div style="width: 250px; height: 100px; font-size: 20px; float: right; color: red; border-color: red; border-radius:10px">
+    <div >Current Average: <span>{{ currAvg }}</span></div>
+    <!-- Overall Average Level of Understanding -->
+    <div >Historical Average: <span>{{ hisAvg }}</span></div>
+  </div>
+  <br>
+  <br>
 
-
-<!-- Current Average Feeling -->
-<div style="width: 250px; height=100px; font-size: 20px; float: right; color: red; border-color: red; border-radius:10px">
-<div >Current Average: <span>{{ currAvg }}</span></div>
-<!-- Overall Average Feeling -->
-<div >Historical Average: <span>{{ hisAvg }}</span></div>
-</div>
-<br>
-<br>
-
-<h2>Questions</h2>
-<div width="150px">
-<div id="question-header" ng-repeat="prompt in questionLists track by $index" ng-model="questionLists" style="border-color: red; border-width:5px">
-    <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">#{{$index+1}}. {{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked" style="font-size:24px; color: purple"> % of Students with correct response: <span style="color: red">{{studentStats[prompt.index].correctPercent}} </span>%</div>
-</div>
-</div>
+  <h2>Questions</h2>
+  <div>
+    <div id="question-header" ng-repeat="prompt in questionLists track by $index" ng-model="questionLists" style="border-color: red; border-width:5px">
+        <div ng-click="submitQuestion(prompt)" ng-class ="{'show': prompt.clicked === false, 'grayOut': prompt.clicked === true}">#{{$index+1}}. {{prompt.question}}</div> <div width="200px" ng-show="prompt.clicked" style="font-size:24px; color: purple"> Students with correct response:&nbsp;&nbsp;<span style="color: red">{{studentStats[prompt.index].correctPercent}}% </span></div>
+    </div>
+  </div>
 
 
 
