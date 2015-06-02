@@ -6,29 +6,30 @@
   <h3>Select a session:</h3>
   <!-- Where historic sessions are appended -->
   <div ng-app ng-model="tokki">
-  <table align="center">
-    <tbody>
-      <tr>
-        <th>Session ID</th>
-        <th>Start Time</th>
-        <th>Duration (min)</th>
-        <th>Average</th>
-        <th>User Count</th>
-      </tr>
-      <!--Additional sessions appended-->
-      <!--<tr><td colspan="5" ></td></tr>-->
-      <tr ng-repeat="session in sessions | orderBy: session.startTime">
-        <td><a href="#/api/"+session.id ng-click="hidePage()">{{session.sessionId}} </td>
-        <td><mydate>{{ session.startTime | date:'yyyy-MM-dd HH:mm'}}</mydate></td>
-        <!--Duration is in milliseconds (ms)
-            Divided to represent minutes, one sig fig-->
-        <td>{{session.duration/1000/60 | number:1}}</td>
-        <td>{{session.weightedAverage | number:1}}</td>
-        <td>{{session.userCount}}</td>
-        <td><button class="deleteSessionButton" ng-click="deleteSession(session.sessionId)">Delete</button></td>
+    <table align="center">
+      <tbody>
+        <tr>
+          <th>Session ID</th>
+          <th>Start Time</th>
+          <th>Duration (min)</th>
+          <th>Average</th>
+          <th>User Count</th>
         </tr>
-        <!--<tr><td colspan="5"></tr>-->
-    </tbody>
-  </table>
+        <!--Additional sessions appended-->
+        <!--<tr><td colspan="5" ></td></tr>-->
+        <tr ng-repeat="session in sessions | orderBy: session.startTime">
+          <td><a href="#/api/"+session.id ng-click="hidePage()">{{session.sessionId}} </td>
+          <td><mydate>{{ session.startTime | date:'yyyy-MM-dd HH:mm'}}</mydate></td>
+          <!--Duration is in milliseconds (ms)
+              Divided to represent minutes, one sig fig-->
+          <td>{{session.duration/1000/60 | number:1}}</td>
+          <td>{{session.weightedAverage | number:1}}</td>
+          <td>{{session.userCount}}</td>
+          <td><button class="deleteSessionButton" ng-click="deleteSession(session.sessionId)">Delete</button></td>
+          </tr>
+          <!--<tr><td colspan="5"></tr>-->
+      </tbody>
+    </table>
+  </div>
 </div>
 
