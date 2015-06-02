@@ -48,6 +48,13 @@ tr:hover td {
   background: #839EB2;
 }
 
+.invisibleSubmitField {
+  height: 0px;
+  width: 0px;
+  border: none;
+  padding: 0px;
+}
+
 /********************************/
 /*GUEST SESSION STYLES*/
 /********************************/
@@ -58,7 +65,7 @@ tr:hover td {
   font-family: "Armata", sans-serif;
   width: 300px;
   text-align: center;
-  color: grey;
+  color: gray;
   font-size: 24px;
 }
 
@@ -76,6 +83,23 @@ tr:hover td {
   color: #355065;
   padding: 5px 5px;
   text-decoration: none;
+}
+
+.sessionStats {
+  width: 250px;
+  height: 100px;
+  font-size: 16px;
+  float: left;
+}
+
+.comprehensionStats {
+  width:250px;
+  height:100px;
+  font-size:20px;
+  color:red;
+  border-color:red;
+  border-radius:10px;
+  float:right;
 }
 
 /********************************/
@@ -279,7 +303,7 @@ tr:hover td {
   border: 2px solid #355065;
   margin-top: 10px;
   color: #355065;
-} 
+}
 
 .qMessage {
   list-style-type: none;

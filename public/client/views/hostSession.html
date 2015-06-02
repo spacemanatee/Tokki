@@ -32,7 +32,7 @@
   });
   </script>
 
-  <div style="width: 250px; height: 100px; font-size: 16px; float: left">
+  <div class="sessionStats">
     <div >Session ID: <span>{{ sessionId }}</span></div>
     <!-- Number of Voters in Room -->
     <div >Number of Voters: <span>{{ userCount }}</span></div>
@@ -40,10 +40,9 @@
     <div >Time: <span>{{ time }}</span></div>
   </div>
 
-  <!-- Current Average Level of Understanding -->
-  <div style="width: 250px; height: 100px; font-size: 20px; float: right; color: red; border-color: red; border-radius:10px">
+  <!-- "Level of Comprehension" Stats -->
+  <div class="comprehensionStats">
     <div >Current Average: <span>{{ currAvg }}</span></div>
-    <!-- Overall Average Level of Understanding -->
     <div >Historical Average: <span>{{ hisAvg }}</span></div>
   </div>
   <br>
