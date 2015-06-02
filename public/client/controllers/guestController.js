@@ -25,15 +25,11 @@ angular.module('tokki')
   // Opens Session
   $scope.init = function(sessionId) {
     GuestServices.getSession( sessionId, function(sessionId, data) {
-      console.log('listening to session: ' + $location.path().split('/')[2]);
       // Runs on session end
-
       socket.on('questionForStudent', function(msg){
-        console.log('question posted!!', msg);
         $scope.index=msg.index;
       });
       GuestServices.listen( function() {
-        console.log('session has ended');
         $state.go('home', {}, {reload: true});
       });
     });
@@ -60,8 +56,6 @@ angular.module('tokki')
     for(var i=0; i < $scope.answers.length; i++){
       $scope.answers[i].selected = null;
     }
-
-      console.log('answer value,',newAnswer.value );
       GuestServices.submitAnswer([$scope.index,newAnswer.value]);
       $scope.currAnswer= newAnswer.value;
       newAnswer.selected = 'selected';
@@ -74,6 +68,5 @@ angular.module('tokki')
   $scope.show = true;
 
   // This will be given before this page loads.
-  console.log('$location: ' + $location.path().split('/')[2]);
   $scope.init($location.path().split('/')[2]);
 }]);

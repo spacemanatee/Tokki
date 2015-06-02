@@ -19,7 +19,6 @@ angular.module('tokki')
       url: '/host/old'
     })
     .then(function(resp) {
-      console.log("SessionHistory called");
       // Historical data pulled from server via db
       cb(resp.data);
     });
@@ -34,9 +33,7 @@ angular.module('tokki')
       url: session.url + session.hostId + '/' + session.sessionId
     })
     .then(function(resp){
-      console.log("SessionAnalysis called");
       session.data = resp.data;
-      // cb(resp.data);
     });
   };
 
@@ -46,7 +43,6 @@ angular.module('tokki')
       url: '/deletesession/' + sessionId
     })
     .then(function(resp) {
-      console.log("RESP: ", resp);
       cb();
     });
   };
