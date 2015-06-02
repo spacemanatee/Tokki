@@ -12,7 +12,6 @@ exports.init = function(sessionId, done) {
     io = require('../../server').io;
   }
 
-  console.log('socketUtils init!!!!!');
   getQuestions(function(results){
     for (var key in results) {
       questions.push(results[key]);
@@ -58,7 +57,6 @@ exports.init = function(sessionId, done) {
     });
   });
 
-  console.log('done function here:', done);
   done();
 };
 
@@ -68,7 +66,6 @@ var sumUpResponse = function(answers) {
     for (var key in answers) {
       if (key !== 'correctPercent') {
         sum+= parseInt(answers[key]);
-        console.log('inside loop, sum: ', sum);
       }
     }
     console.log(sum);
@@ -82,7 +79,6 @@ function calculateStudentsStats(msg, questions, stats) {
     stats[index]={'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'correctPercent':0};
   }
   stats[index][answer] +=1;
-  console.log('question array ',questions);
   var answerKey= questions[index].correctAnswer;
   var sum= sumUpResponse(stats[index]);
   var average= stats[index][answerKey]/sum *100;

@@ -41,7 +41,6 @@ app.use(flash());
 require('./auth/passport')(passport);
 
 app.use('/deletesession', function(req, res) {
-  console.log("APP.JS deletesession: ", req.path);
   hostController.deleteSession(req, res, req.path, function() {
     res.send("res");
   });
@@ -54,12 +53,10 @@ app.get('/', function(req, res, next) {
 
 /* POST from question page. */
 app.post('/question', function(req, res, next) {
-  console.log("REQ BODY: ", req.body);
 
   dbUtils.addQuestionToDb(req.body);
 
   dbUtils.getQuestions(function(results) {
-    console.log('RESULTS POST QUESTION: ', results);
     res.send(results);
   });
 
@@ -68,18 +65,10 @@ app.post('/question', function(req, res, next) {
 app.get('/question', function(req, res, next) {
 
   dbUtils.getQuestions(function(results) {
-    console.log('RESULTS GET QUESTIONS: ', results);
     res.send(results);
   });
 
 });
-
-// app.post('/deletesession', function(req, res, next) {
-//   console.log("ID TO DELETE1: ", req.body);
-
-//   dbUtils.deleteSession(req.body);
-
-// });
 
 app.use('/guest', guestRouter);
 app.use('/host', hostRouter);

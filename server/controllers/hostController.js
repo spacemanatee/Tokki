@@ -31,15 +31,12 @@ exports.registerSession = function(req, res) {
       // console.log("THIS OBJECT: ", this);
       socketUtils.init(sessionId, function() {
         dbUtils.getQuestions(function(questions) {
-
-          console.log('REGISTER AND GET_QUESTIONS: ', questions);
           var data = {};
           data.session = sessionId;
           data.questions = [];
           for (var key in questions) {
             data.questions.push(questions[key]);
           }
-          console.log('line before response!');
           res.send(data);
           // attempting to send back old response object
           // new to create new response
@@ -53,7 +50,6 @@ exports.retrieveSessions = function(req, res) {
   var hostInfo = req.session.passport.user;
   dbUtils.getSessionsFromDb(hostInfo, function(err, sessions) {
     if(err) {
-      console.error(err);
       res.status(500).end();
     } else {
       res.status(200).json(sessions);
@@ -62,33 +58,18 @@ exports.retrieveSessions = function(req, res) {
 };
 
 exports.deleteSession = function(req, res, session, cb) {
-  console.log("DELETING SESSION (CONTROLLER)");
   var hostInfo = req.session.passport.user;
   var sessionID = session.slice(1);
   dbUtils.deleteSessionFromDb(hostInfo, sessionID, function () {
-    console.log("CALLED called in hostController");
     cb();
   });
 };
 
-// Returns an object with properties: {
-// startTime: 1429426355540,
-// endTime: 1429426355326,
-// interval: 2000,
-// weightedAverage: 1.1,
-// voteAverages: [
-//   {
-//     timeStep: 11,
-//     average: 1
-//   },
-//   ...
-// ]
 exports.retrieveSession = function(req, res) {
   var hostInfo = req.session.passport.user;
   hostInfo.sessionId = req.body.sessionId;
   dbUtils.getSessionFromDb(hostInfo, function(err, sessionResults) {
     if(err) {
-      console.error(err);
       res.status(500).end();
     } else {
       sessionResults.voteAverages = [];

@@ -40,7 +40,6 @@ angular.module('tokki')
   // Sends vote
   var vote = function(voteData) {
     if(session.socket){
-      console.log('vote:' + voteData);
       session.socket.emit('vote', voteData);
     }
   };
@@ -48,9 +47,7 @@ angular.module('tokki')
 
   var submitAnswer = function(answerData) {
     if(session.socket){
-      console.log('answer:' + answerData);
       session.socket.emit('studentAnswer', answerData);
-      console.log('here we are after emit');
     }
   };
 

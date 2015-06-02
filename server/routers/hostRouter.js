@@ -15,7 +15,6 @@ module.exports = function(app, passport) {
 
 var isLoggedIn = function(req, res, next) {
   if (req.isAuthenticated()) {
-    console.log("JEFKEFJEFKJ");
     next();
   } else {
     res.status(401).send('Unauthorized');

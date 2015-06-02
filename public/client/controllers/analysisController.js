@@ -11,7 +11,6 @@ angular.module('tokki')
 
   $scope.init = function(currHostId) {
     AnalysisServices.sessionHistory( currHostId, function(sessionId, data) {
-      console.log('Populated data from host: ' + currHostId);
     });
   };
 
@@ -25,12 +24,10 @@ angular.module('tokki')
 
   // Presents analysis for a specific session
   $scope.sessionAnalysis = function(){
-    console.log("Session Analysis");
     AnalysisServices.sessionAnalysis();
   };
 
   $scope.deleteSession = function(session){
-    console.log('delete button pressed');
     AnalysisServices.deleteSession(session, function() {
       $scope.sessionHistory();
     });
